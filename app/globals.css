@@ -5,4 +5,60 @@
 @layer base{
   body{}
   .container{}
+  .nav-header{
+    @apply text-gray-500 text-sm;
+  }
+  .nav-header-menu a{
+    position: relative;
+    top:0px;
+    left:0px;
+  }
+  .nav-header-menu a::before{
+    content: '';
+    position: absolute;
+    top:0px;
+    left:50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 100%;
+    @apply border-b-[1px] border-b-gray-500 transition-all;
+  }
+  .nav-header-menu a:hover::before {
+    width: 80%;
+  }
+  .nav-header-menu-item-inner-menu{
+    animation: comesIn 0.5s ease-in-out forwards;
+    transform: translate(-50%,0%);
+  }
+  @keyframes comesIn {
+    0%{
+      opacity: 0;
+      transform: translate(-50%,30px);
+    } 
+    100%{
+      opacity: 1;
+      transform: translate(-50%,0px);
+    }
+  }
+  @media (min-width:768px) {
+    .nav-body-hamburger{
+      display: none;
+    }
+  }
+  .nav-body-menu-item{
+    @apply relative top-0 left-0 min-w-fit;
+  }
+  .nav-body-menu-item::before{
+    content: '';
+    position: absolute;
+    top:0px;
+    left:50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 100%;
+    @apply border-b-[1px] border-b-gray-500 transition-all;
+  }
+  .nav-body-menu-item:hover::before{
+    width: 100%;
+  }
 }
