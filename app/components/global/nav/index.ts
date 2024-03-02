@@ -1,11 +1,11 @@
 import Header from "./header.component";
-import Body from "./body.component";
+import { NavBodyComponents } from "./nav-body";
 import Footer from "./footer.component";
 import Nav from "./nav.component";
 
 export const NavComponents = {
     Header,
-    Body,
+    NavBodyComponents,
     Footer,
     Nav
 }

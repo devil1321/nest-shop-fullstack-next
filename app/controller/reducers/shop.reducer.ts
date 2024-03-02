@@ -1,12 +1,21 @@
 import { ShopTypes } from "../types"
 import { ShopActions } from "../actions/shop.actions"
+import store from "../store";
 
 interface InitState {
     currency:number;
+    orderTrackingCount:number;
+    cartCount:number;
+    cart:any[];
+    products:any[];
 }
 
 const initState:InitState = {
-    currency:1
+    currency:1,
+    orderTrackingCount:0,
+    cartCount:0,
+    cart:[],
+    products:[]
 }
 
 export default (state:InitState = initState,action:ShopActions) =>{

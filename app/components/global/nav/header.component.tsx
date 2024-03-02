@@ -22,7 +22,7 @@ const Header = () => {
     const [isCurrencyMenu,setIsCurrencyMenu] = useState<boolean>(false)
 
   return (
-    <div className='nav-header py-1 flex flex-col gap-3 md:gap-0 md:flex-row justify-center md:justify-between items-center'>
+    <div className='nav-header text-gray-500 text-sm py-1 flex flex-col gap-3 md:gap-0 md:flex-row justify-center md:justify-between items-center'>
         <div className="nav-header-menu divide-x divide-x-2 divide-x-slate-300 flex justify-between items-center gap-2">
             <Link className='text-center px-2' href="/about">About Us</Link>
             <Link className='text-center px-2' href="/profile">My Account</Link>

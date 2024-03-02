@@ -5,9 +5,6 @@
 @layer base{
   body{}
   .container{}
-  .nav-header{
-    @apply text-gray-500 text-sm;
-  }
   .nav-header-menu a{
     position: relative;
     top:0px;
@@ -41,14 +38,14 @@
     }
   }
   @media (min-width:768px) {
-    .nav-body-hamburger{
+    .nav-footer-hamburger{
       display: none;
     }
   }
-  .nav-body-menu-item{
+  .nav-footer-menu-item,.nav-body-menu-item-link{
     @apply relative top-0 left-0 min-w-fit;
   }
-  .nav-body-menu-item::before{
+  .nav-footer-menu-item::before,.nav-body-menu-item-link::before{
     content: '';
     position: absolute;
     top:0px;
@@ -58,7 +55,10 @@
     height: 100%;
     @apply border-b-[1px] border-b-gray-500 transition-all;
   }
-  .nav-body-menu-item:hover::before{
+  .nav-footer-menu-item:hover::before{
     width: 100%;
+  }
+  .footer-column a{
+    @apply hover:underline
   }
 }
