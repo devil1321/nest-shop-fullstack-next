@@ -1,9 +1,11 @@
-import Image from "next/image";
+import { GlobalComponents } from "./components/global";
 
 export default function Home(props:any) {
-  console.log('rops',props)
   return (
     <main className="container mx-auto">
+      <div className="home-section-with-sidebar">
+        <GlobalComponents.SidebarComponents.FullSidebar />
+      </div>
     </main>
   );
 }

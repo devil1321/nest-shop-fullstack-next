@@ -61,4 +61,16 @@
   .footer-column a{
     @apply hover:underline
   }
+  .sidebar-category-header,.sidebar-filter-header {
+    @apply relative top-0 left-0 py-5 my-5;
+  }
+  .sidebar-category-header::before,.sidebar-filter-header::before {
+    content: '';
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    height: 3px;
+    width: 8%;
+    @apply bg-green-500;
+  }
 }
