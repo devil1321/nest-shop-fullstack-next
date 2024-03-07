@@ -1,0 +1,112 @@
+[
+    {
+        "id":1,
+        "event":"Hot",
+        "title":"Seeds of Change Organic Quinoa, Brown, & Red Rice",
+        "category":3,
+        "price":28.85,
+        "prevPrice":32.8,
+        "company":"By NestFood",
+        "rating":4.0,
+        "inCart":false
+    },
+    {
+        "id":2,
+        "event":"Sale",
+        "title":"All Natural Italian-Style Chicken Meatballs",
+        "category":1,
+        "price":52.85,
+        "prevPrice":55.8,
+        "company":"By Stouffer",
+        "rating":3.5,
+        "inCart":false
+    },
+    {
+        "id":3,
+        "event":"New",
+        "title":"Angie`s Boomchickapop Sweet & Salty Kettle Corn",
+        "category":2,
+        "price":48.85,
+        "prevPrice":52.8,
+        "company":"By StarKist",
+        "rating":4.0,
+        "inCart":false
+    },
+    {
+        "id":4,
+        "event":null,
+        "title":"Foster Farms Takeout Crispy Classic Buffalo Wings",
+        "category":1,
+        "price":17.85,
+        "prevPrice":19.8,
+        "company":"By NestFood",
+        "rating":4.0,
+        "inCart":false
+    },
+    {
+        "id":5,
+        "event":"-14%",
+        "title":"Blue Diamond Almonds Lightly",
+        "category":2,
+        "price":23.85,
+        "prevPrice":25.8,
+        "company":"By NestFood",
+        "rating":2.0,
+        "inCart":false
+    },
+    {
+        "id":6,
+        "event":null,
+        "title":"Chobani Complete Vanilla Greek",
+        "category":3,
+        "price":54.85,
+        "prevPrice":55.8,
+        "company":"By NestFood",
+        "rating":3.2,
+        "inCart":false
+    },
+    {
+        "id":7,
+        "event":null,
+        "title":"Canada Dry Ginger Ale -2 L Bottle",
+        "category":3,
+        "price":45,
+        "prevPrice":23,
+        "company":"By NestFood",
+        "rating":5.0,
+        "inCart":false
+    },
+    {
+        "id":8,
+        "event":"Sale",
+        "title":"Encore Seafoods Stuffed Alaskan",
+        "category":1,
+        "price":35.85,
+        "prevPrice":45.65,
+        "company":"By NestFood",
+        "rating":3.2,
+        "inCart":false
+    },
+    {
+        "id":9,
+        "event":"Hot",
+        "title":"Gorton`s Beer Battered Fish Fillets",
+        "category":2,
+        "price":40,
+        "prevPrice":42,
+        "company":"By Old El Paso",
+        "rating":4.2,
+        "inCart":false
+    },
+    {
+        "id":10,
+        "event":"-14%",
+        "title":"Haagen-Dazs Caramel Cone Ice Cream",
+        "category":3,
+        "price":31.21,
+        "prevPrice":38.92,
+        "company":"By Tyson",
+        "rating":5.0,
+        "inCart":false
+    }
+]

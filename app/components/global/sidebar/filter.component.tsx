@@ -43,11 +43,11 @@ const Filter = () => {
         <form action="">
             <div className="sidebar-filter-sliders">
               <div ref={sliderMinRef} onMouseDown={()=>setIsMin(true)} onMouseUp={()=>setIsMin(false)} className="sidebar-filter-slider relative top-0 left-0 mb-10 w-[125px]">
-                <input onChange={(e)=>setMin(e.target.value)} onMouseMove={(e)=>handleMin(e)} value={min} className='block my-2' type="range" name="min" id="" min={0} max={100} />
+                <input onChange={(e)=>setMin(Number(e.target.value))} onMouseMove={(e)=>handleMin(e)} value={min} className='block my-2' type="range" name="min" id="" min={0} max={100} />
                 <div ref={minRef} className="sidebar-filter-slider-count bg-green-500 rounded-md w-fit px-3 font-bold text-white absolute top-5 left-0">0</div>
               </div>
               <div ref={sliderMaxRef} onMouseDown={()=>setIsMax(true)} onMouseUp={()=>setIsMax(false)} className="sidebar-filter-slider relative top-0 left-0 mb-10 w-[125px]">
-                <input onChange={(e)=>setMax(e.target.value)} onMouseMove={(e)=>handleMax(e)} value={max} className='block my-2' type="range" name="max" id="" min={0} max={100} />
+                <input onChange={(e)=>setMax(Number(e.target.value))} onMouseMove={(e)=>handleMax(e)} value={max} className='block my-2' type="range" name="max" id="" min={0} max={100} />
                 <div ref={maxRef} className="sidebar-filter-slider-count bg-green-500 rounded-md w-fit px-3 font-bold text-white absolute top-5 left-0">0</div>
               </div>
             </div>

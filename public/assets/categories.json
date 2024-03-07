@@ -1,0 +1,52 @@
+[
+    {
+        "id":1,
+        "img":"/assets/home/category-1.png",
+        "category":"Cake & Milk"
+    },
+    {
+        "id":2,
+        "img":"/assets/home/category-2.png",
+        "category":"Oganic Kiwi"
+    },
+    {
+        "id":3,
+        "img":"/assets/home/category-3.png",
+        "category":"Peach"
+    },
+    {
+        "id":4,
+        "img":"/assets/home/category-4.png",
+        "category":"Red Apple"
+    },
+    {
+        "id":5,
+        "img":"/assets/home/category-5.png",
+        "category":"Snack"
+    },
+    {
+        "id":6,
+        "img":"/assets/home/category-6.png",
+        "category":"Vegetables"
+    },
+    {
+        "id":7,
+        "img":"/assets/home/category-7.png",
+        "category":"Strawberry"
+    },
+    {
+        "id":8,
+        "img":"/assets/home/category-8.png",
+        "category":"Black plum"
+    },
+    {
+        "id":9,
+        "img":"/assets/home/category-9.png",
+        "category":"Custard apple"
+    },
+    {
+        "id":10,
+        "img":"/assets/home/category-10.png",
+        "category":"Coffe & Tea"
+    }
+]
