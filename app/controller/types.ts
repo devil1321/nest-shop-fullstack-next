@@ -4,7 +4,8 @@ export enum UITypes {
 }
 
 export enum ShopTypes {
-    SHOP_CHANGE_CURRENCY = 'SHOP_CHANGE_CURRENCY'
+    SHOP_CHANGE_CURRENCY = 'SHOP_CHANGE_CURRENCY',
+    SHOP_SET_PRODUCTS = 'SHOP_SET_PRODUCTS'
 }
 
 export enum APITypes {

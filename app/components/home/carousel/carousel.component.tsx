@@ -8,8 +8,8 @@ const Carousel = () => {
   const handleAnimate = (tl:any) =>{
     tl.from('.home-carousel-item-details h2',{ x:500, opacity:0 })
     tl.from('.home-carousel-item-details p',{ opacity:0 })
-    tl.from('.home-carousel-item-details input',{ opacity:0 })
     tl.from('.home-carousel-item-details button',{ x:-240 })
+    tl.from('.home-carousel-item-details input',{ opacity:0 })
   }
 
   const handlePrev = () =>{

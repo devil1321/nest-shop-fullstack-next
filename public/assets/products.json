@@ -1,6 +1,7 @@
 [
     {
         "id":1,
+        "img":"/assets/global/product-1.png",
         "event":"Hot",
         "title":"Seeds of Change Organic Quinoa, Brown, & Red Rice",
         "category":3,
@@ -12,6 +13,7 @@
     },
     {
         "id":2,
+        "img":"/assets/global/product-2.png",
         "event":"Sale",
         "title":"All Natural Italian-Style Chicken Meatballs",
         "category":1,
@@ -23,6 +25,7 @@
     },
     {
         "id":3,
+        "img":"/assets/global/product-3.png",
         "event":"New",
         "title":"Angie`s Boomchickapop Sweet & Salty Kettle Corn",
         "category":2,
@@ -34,6 +37,7 @@
     },
     {
         "id":4,
+        "img":"/assets/global/product-4.png",
         "event":null,
         "title":"Foster Farms Takeout Crispy Classic Buffalo Wings",
         "category":1,
@@ -45,6 +49,7 @@
     },
     {
         "id":5,
+        "img":"/assets/global/product-5.png",
         "event":"-14%",
         "title":"Blue Diamond Almonds Lightly",
         "category":2,
@@ -56,6 +61,7 @@
     },
     {
         "id":6,
+        "img":"/assets/global/product-6.png",
         "event":null,
         "title":"Chobani Complete Vanilla Greek",
         "category":3,
@@ -67,6 +73,7 @@
     },
     {
         "id":7,
+        "img":"/assets/global/product-7.png",
         "event":null,
         "title":"Canada Dry Ginger Ale -2 L Bottle",
         "category":3,
@@ -78,6 +85,7 @@
     },
     {
         "id":8,
+        "img":"/assets/global/product-8.png",
         "event":"Sale",
         "title":"Encore Seafoods Stuffed Alaskan",
         "category":1,
@@ -89,6 +97,7 @@
     },
     {
         "id":9,
+        "img":"/assets/global/product-9.png",
         "event":"Hot",
         "title":"Gorton`s Beer Battered Fish Fillets",
         "category":2,
@@ -100,6 +109,7 @@
     },
     {
         "id":10,
+        "img":"/assets/global/product-10.png",
         "event":"-14%",
         "title":"Haagen-Dazs Caramel Cone Ice Cream",
         "category":3,

@@ -16,7 +16,7 @@ const Item:React.FC<ItemProps> = ({img,heading,paragraph}) => {
         <p className="text-md">{paragraph}</p>
         <div className="home-carousel-item-field rounded-full my-4 bg-white w-fit">
             <form action="" className='flex items-center'>
-                <input className='ml-5' type="text" placeholder='Your emaill address'/>
+                <input className='ml-5 opacity-0' type="text" placeholder='Your emaill address'/>
                 <button className='rounded-full bg-green-500 font-bold text-white py-2 px-6'>Subscribe</button>
             </form>
         </div>

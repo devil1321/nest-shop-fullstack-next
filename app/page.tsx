@@ -9,6 +9,8 @@ export default function Home(props:any) {
         <div className="homve-section-with-sidebar-inner w-4/5">
           <HomeComponents.CarouselComponents.Carousel />
           <HomeComponents.CategoriesComponents.Categories />
+          <HomeComponents.FeatureComponents.Feature />
+          <HomeComponents.Products />
         </div>
       </div>
     </main>

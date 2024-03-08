@@ -1,5 +1,6 @@
 import { Dispatch } from "redux"
 import { ShopTypes } from "../types"
+import axios from "axios"
 
 export const changeCurrency = (currency:string) => (dispatch:Dispatch) =>{
 
@@ -23,4 +24,17 @@ export const changeCurrency = (currency:string) => (dispatch:Dispatch) =>{
         type:ShopTypes.SHOP_CHANGE_CURRENCY,
         currency:actualCurrency
     })
+}
+
+export const setProducts = () => async(dispatch:Dispatch) =>{
+    try{
+        const res = await axios.get('/assets/products.json')
+        const data = await res.data
+        dispatch({
+            type:ShopTypes.SHOP_SET_PRODUCTS,
+            products:data
+        })
+    }catch(err){
+        console.log(err)
+    }
 }
