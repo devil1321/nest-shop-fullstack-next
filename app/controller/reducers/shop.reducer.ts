@@ -25,11 +25,6 @@ export default (state:InitState = initState,action:ShopActions) =>{
                 ...state,
                 currency:action.currency
             }
-        case ShopTypes.SHOP_SET_PRODUCTS:
-            return{
-                ...state,
-                products:action.products
-            }
         default:
             return {
                 ...state

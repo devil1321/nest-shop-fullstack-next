@@ -11,8 +11,10 @@ export default function Home(props:any) {
           <HomeComponents.CategoriesComponents.Categories />
           <HomeComponents.FeatureComponents.Feature />
           <HomeComponents.Products />
+          <HomeComponents.DealsComponents.Deals />
         </div>
       </div>
+      <HomeComponents.FiguresComponents.Figures />
     </main>
   );
 }

@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 @layer base{
-  body{}
-  .container{}
+  .container{
+    @apply relative top-0 left-0;
+  }
   .nav-header-menu a{
     position: relative;
     top:0px;

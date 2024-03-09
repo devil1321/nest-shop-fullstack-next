@@ -6,12 +6,10 @@ import { Provider, useDispatch } from "react-redux";
 import store from "./controller/store";
 import { GlobalComponents } from "./components/global";
 import { useEffect } from "react";
-import * as ShopActions from '@/app/controller/action-creators/shop.action-creators'
+import * as APIActions from '@/app/controller/action-creators/api.action-creators'
 import { bindActionCreators } from "redux";
 
 const inter = Inter({ subsets: ["latin"] });
-
-
 
 export default function RootLayout({
   children,
@@ -39,10 +37,10 @@ export default function RootLayout({
 const WithProducts = ({children}:{children:React.ReactNode}) =>{
 
   const dispatch = useDispatch()
-  const shopActions = bindActionCreators(ShopActions,dispatch)
+  const apiActions = bindActionCreators(APIActions,dispatch)
 
   useEffect(()=>{
-    shopActions.setProducts()
+    apiActions.setProducts()
   },[])
 
   return(

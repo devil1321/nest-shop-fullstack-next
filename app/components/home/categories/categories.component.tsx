@@ -14,7 +14,7 @@ const Categories = () => {
       <Nav />
       <div className="home-categories-items flex gap-3 items-start">
         {/* @ts-ignore */}
-        {categories.map((c:any) => <Category category={c} />)}
+        {categories.map((c:any,i:number) => <Category key={`category-${c}-${i}`} category={c} />)}
       </div>
     </div>
   )
