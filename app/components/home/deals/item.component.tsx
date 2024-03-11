@@ -33,7 +33,7 @@ const Item:React.FC<ItemProps> = ({img,toDate,product}) => {
   },[])
 
   return (
-    <div className='home-countdown-item relative w-1/4 top-0 left-0'>
+    <div className='home-countdown-item relative md:w-1/2 xl:w-1/4 top-0 left-0'>
       <div className="home-countdown-intro relative top-0 left-0 w-[100%] h-[200px]">
         <Image className='absolute top-0 left-0 w-[100%] h-[100%]' src={img} alt="countdown-background" width={300} height={200} />
         <div className="home-countdown-counts relative z-10 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center gap-3">

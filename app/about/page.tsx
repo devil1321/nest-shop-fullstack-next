@@ -1,9 +1,10 @@
 import React from 'react'
+import { AboutComponents } from '../components/about'
 
 const About = () => {
   return (
-    <div>
-      about
+    <div className='about'>
+      <AboutComponents.CarouselComponents.Carousel />
     </div>
   )
 }

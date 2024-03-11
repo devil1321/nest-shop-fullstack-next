@@ -9,7 +9,7 @@ const Products = () => {
   const { products } = useSelector((state:State) => state.api)
 
   return (
-    <div className='home-products flex gap-5 flex-wrap'>
+    <div className='home-products flex justify-center md:justify-start gap-5 flex-wrap'>
       {products.map((p:any)=> <GlobalComponents.Product key={`product-${p.id}`} className="md:w-1/3 xl:min-w-[240px] my-2 xl:w-1/5" product={p} />)}
     </div>
   )

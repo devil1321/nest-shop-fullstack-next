@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base{
-  .container{
-    @apply relative top-0 left-0;
-  }
   .nav-header-menu a{
     position: relative;
     top:0px;
@@ -84,5 +81,22 @@
     border-top-left-radius: 25px;
     border-bottom-right-radius: 25px;
     transition: all 0.5s ease-in-out;
+  }
+  .home-products-inner-nav-item{
+    @apply relative top-0 left-0 cursor-pointer;
+  }
+  .home-products-inner-nav-item::before{
+    content:'';
+    @apply absolute top-0 left-0 w-[30%] h-[100%] py-6 md:py-4 border-b-4 border-green-300 transition-all;
+  }
+  .home-products-inner-nav-item:hover::before{
+    @apply w-[60%];
+  }
+  .about-carousel-view-cell-front{
+    transform: rotateY(0deg);
+  }
+  .about-carousel-view-cell-back{
+    backface-visibility: visible;
+    transform: rotateY(180deg);
   }
 }

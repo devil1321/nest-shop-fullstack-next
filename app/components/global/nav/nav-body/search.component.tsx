@@ -13,7 +13,7 @@ const Search = () => {
   return (
     <div className="nav-body-search md:w-1/2 border-[1px] border-slate-300 p-2 flex items-center divide-x-2 divide-x-slate-200">
         <div className='nav-body-search-categories relative top-0 left-0 px-2'>
-          <h3 onClick={()=>setIsCategoriesMenu(!isCategoriesMenu)} className="text-sm font-bold min-w-[100px]">{categoriesOption}</h3>
+          <h3 onClick={()=>setIsCategoriesMenu(!isCategoriesMenu)} className="cursor-pointer text-sm font-bold min-w-[100px]">{categoriesOption}</h3>
           {isCategoriesMenu &&
             <div className="nav-body-search-categories-menu absolute w-max z-10 top-10 left-1/2 -translate-x-1/2 bg-white border-[1px] border-slate-200 shadow-lg shadow-gray-500">
                 <div onClick={(e:any)=>{

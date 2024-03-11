@@ -77,7 +77,7 @@ const Filter = () => {
               <input className='mr-2 accent-green-500' type="checkbox" name="" id="" />
               <span>Used (45)</span>
             </div>
-            <div className="sidebar-filter-action flex justify-between items-end w-fit">
+            <div className="sidebar-filter-action flex justify-between items-end w-[100%] md:w-fit">
               <button type="submit" className='py-3 px-10 font-bold text-white bg-green-500 rounded-md'>Filter</button>
               <Image src="/assets/global/footer-image.png" alt="leaves" width={100} height={100} />
             </div>

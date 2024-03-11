@@ -7,5 +7,10 @@ interface CHANGE_CURRENCY{
     type:UITypes.UI_CHANGE_CURRENCY_STRING,
     currency:string;
 }
+interface SET_ABOUT_CAROUSEL_MAIN_IMAGE{
+    type:UITypes.UI_ABOUT_CAROUSEL_SET_MAIN_IMAGE,
+    aboutCarouselMainImageSrc:string;
+}
 
-export type UIActions = CHANGE_LANGUAGE | CHANGE_CURRENCY
+
+export type UIActions = CHANGE_LANGUAGE | CHANGE_CURRENCY  | SET_ABOUT_CAROUSEL_MAIN_IMAGE

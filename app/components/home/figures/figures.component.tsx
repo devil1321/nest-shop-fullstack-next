@@ -15,8 +15,7 @@ const Figures = () => {
       scrollTrigger:{
         trigger:'.home-figures',
         start:'+=1200px',
-        end:'+=200px',
-        markers:true
+        end:'+=200px'
       }
     })
   }
@@ -26,7 +25,7 @@ const Figures = () => {
   },[])
 
   return (
-    <div className='home-figures my-12 '>
+    <div className='home-figures px-2 md:px-0 my-12 '>
       <h2 className="font-bold text-2xl my-5">Categories</h2>
       <div className='home-figures-items flex flex-wrap gap-3 justify-center'>
         <Item img="/assets/home/figure-1.svg" title='Milks and Dairies' />

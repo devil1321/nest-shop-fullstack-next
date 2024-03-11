@@ -9,7 +9,7 @@ interface ProductProps{
 
 const Product:React.FC<ProductProps> = ({product,className}) => {
   return (
-    <div className={`product cursor-pointer transition-all rounded-[25px] border-[1px] border-gray-200 relative top-0 left-0 ${className}`}>
+    <div className={`product mx-2 md:mx-0 cursor-pointer transition-all rounded-[25px] border-[1px] border-gray-200 relative top-0 left-0 ${className}`}>
       {product.event && <div className="product-event absoute top-0 left-0 w-[40%] text-center font-bold text-white bg-orange-600 px-5 py-2">{product.event}</div>}
       <Image src={product.img} alt="product-img" width={300} height={500} />
       <h3 className="px-2 text-md font-bold">{product.title}</h3>

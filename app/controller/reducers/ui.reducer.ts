@@ -4,11 +4,13 @@ import { UIActions } from "../actions/ui.actions"
 interface InitState {
     language:string;
     currency:string;
+    aboutCarouselMainImageSrc:string;
 }
 
 const initState:InitState = {
     language:'English',
-    currency:'USD'
+    currency:'USD',
+    aboutCarouselMainImageSrc:'/assets/about/carousel-1.png',
 }
 
 export default (state:InitState = initState,action:UIActions) =>{
@@ -22,6 +24,11 @@ export default (state:InitState = initState,action:UIActions) =>{
             return {
                 ...state,
                 currency:action.currency
+            }
+        case UITypes.UI_ABOUT_CAROUSEL_SET_MAIN_IMAGE:
+            return {
+                ...state,
+                aboutCarouselMainImageSrc:action.aboutCarouselMainImageSrc
             }
         default:
             return {

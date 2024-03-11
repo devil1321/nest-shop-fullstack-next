@@ -4,6 +4,7 @@ import { FeatureComponents } from "./feature";
 import Products from "./products.component";
 import { DealsComponents } from "./deals";
 import { FiguresComponents } from "./figures";
+import { ProductsComponents } from "./products-inner";
 
 export const HomeComponents = {
     CarouselComponents,
@@ -11,5 +12,6 @@ export const HomeComponents = {
     FeatureComponents,
     Products,
     DealsComponents,
-    FiguresComponents
+    FiguresComponents,
+    ProductsComponents
 }

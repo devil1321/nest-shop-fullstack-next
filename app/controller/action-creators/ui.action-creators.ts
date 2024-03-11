@@ -13,3 +13,20 @@ export const changeCurrency = (currency:string) => (dispatch:Dispatch) =>{
         currency:currency
     })
 }
+
+export const setAboutCarouselImageSrc = (src:string) => (dispatch:Dispatch) =>{
+    dispatch({
+        type:UITypes.UI_ABOUT_CAROUSEL_SET_MAIN_IMAGE,
+        aboutCarouselMainImageSrc:src
+    })
+}
+
+
+
+
+
+
+
+
+
+
