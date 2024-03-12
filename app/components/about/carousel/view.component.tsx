@@ -86,7 +86,7 @@ const handleResetPostions = () =>{
                 backgroundSize:`2900%`,
                 backgroundPositionX:c.w + 'px',
                 backgroundPositionY:c.h + 'px'
-            }} className="about-carousel-cell w-[50px] h-[50px]"></div>
+            }} className="about-carousel-cell transform-cpu w-[50px] h-[50px]"></div>
       })}
     </div>
   )
