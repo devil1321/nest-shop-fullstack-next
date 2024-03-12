@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base{
+  .container{
+    width: 100vw !important;
+    max-width: 100vw !important; 
+    margin: 0px !important;
+    @apply px-2 md:px-5 lg:px-10 xl:px-12;
+  }
   .nav-header-menu a{
     position: relative;
     top:0px;

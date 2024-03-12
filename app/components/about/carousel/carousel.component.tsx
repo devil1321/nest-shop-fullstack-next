@@ -4,7 +4,7 @@ import Details from './details.component'
 
 const Carousel = () => {
   return (
-    <div className='about-carousel flex justify-between items-center'>
+    <div className='about-carousel flex flex-col md:flex-row justify-between items-center'>
       <View />
       <Details 
         title='Welcome to Nest'
