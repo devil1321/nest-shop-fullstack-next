@@ -74,7 +74,7 @@ const Details:React.FC<DetailsProps> = ({title,paragraph_1,paragraph_2}) => {
                                                                 UIActions.setAboutCarouselImageSrc(`/assets/about/carousel-${k+1}.png`)
                                                                 setCount(k+1)
                                                               }}  
-                                                              className='about-carousel-sm-item-wrapper md:h-[50px] lg:h-[100%] overflow-hidden p-1 border-[2px] overflow-hidden'
+                                                              className='about-carousel-sm-item-wrapper md:h-[50px] lg:h-[100%] p-1 border-[2px] overflow-hidden'
                                                             >
                                                               <div 
                                                                 className='about-carousel-sm-item ag-row-position-relative left-0 top-0 z-10 overflow-hidden md:h-[50px] xl:h-[75px] cursor-pointer'>

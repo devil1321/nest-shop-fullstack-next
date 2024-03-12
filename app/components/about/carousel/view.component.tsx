@@ -70,12 +70,12 @@ const handleResetPostions = () =>{
       handleResetPostions()
       handleBackgroundPostion()
     }
-  },[rows,columns,wrapperRef.current,cells])
+  },[rows,columns,cells.length])
 
   useEffect(()=>{
     handleResetPostions()
     handleBackgroundPostion()
-    gsap.fromTo('.about-carousel-cell',{ scale: 0,borderRadius:'100%' }, { scale:1,borderRadius:'0px' ,duration:1 })    
+    gsap.fromTo('.about-carousel-cell',{ scale: 0,y:-20,borderRadius:'100%' }, { scale:1,y:0,borderRadius:'0px' ,duration:0.3,stagger:0.01 })    
   },[aboutCarouselMainImageSrc])
   
   return (

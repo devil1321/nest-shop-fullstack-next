@@ -5,6 +5,7 @@ const About = () => {
   return (
     <div className='about'>
       <AboutComponents.CarouselComponents.Carousel />
+      <AboutComponents.ProvideComponents.Provide />
     </div>
   )
 }
