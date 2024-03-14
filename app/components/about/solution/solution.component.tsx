@@ -13,20 +13,20 @@ const Solution = () => {
     const tl = gsap.timeline()
     tl.fromTo(".about-solution-image",{ opacity:0 },{ opacity:1,scrollTrigger:{
         trigger:'.about-solution-image',
-        start:'-=200px',
-        end:"0px",
+        start:'-=350px',
+        end:"-250px",
         scrub:6,
     }})
     tl.fromTo('.about-solution-details h3',{ x:1000, opacity:0 },{ x:0,opacity:1,scrollTrigger:{
         trigger:'.about-solution-details',
-        start:'-=200px',
-        end:"-=100px",
+        start:'-=350px',
+        end:"-=250px",
         scrub:6,
     }})
     tl.fromTo('.about-solution-details p',{ x:1000, opacity:0 },{ x:0,opacity:1,stagger:0.2,scrollTrigger:{
         trigger:'.about-solution-details',
-        start:'-=200px',
-        end:"-=100px",
+        start:'-=350px',
+        end:"-=250px",
         scrub:6,
     }})
   }

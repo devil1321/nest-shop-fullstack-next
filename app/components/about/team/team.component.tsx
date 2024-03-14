@@ -13,20 +13,20 @@ const Team = () => {
     tl.fromTo('.about-teams-details',{y:-50,opacity:0},{y:0,opacity:1,scrollTrigger:{
         trigger:'.about-teams-details',
         scrub:6,
-        start:'-=100px',
-        end:'+=50px',
+        start:'-=250px',
+        end:'-=200px',
     }})
     tl.fromTo('.about-teams-item-image',{y:100,opacity:0},{y:0,opacity:1,scrollTrigger:{
         trigger:'.about-teams-item-image',
         scrub:6,
-        start:'-=100px',
-        end:'+=50px',
+        start:'-=250px',
+        end:'-=200px',
     }})
     tl.fromTo('.about-teams-item-details',{y:-100,opacity:0},{y:0,opacity:1,scrollTrigger:{
         trigger:'.about-teams-item-image',
         scrub:6,
-        start:'-=100px',
-        end:'+=50px',
+        start:'-=250px',
+        end:'-=200px',
     }})
   }
 
