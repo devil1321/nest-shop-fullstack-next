@@ -14,7 +14,7 @@ const ProductsInner = () => {
     <div className='home-products-inner'>
       <Nav />
       <div className="home-products-items md:flex md:flex-wrap md:justify-between md:items-center py-10">
-        {products.slice(0,9).map((p:Interfaces.Product)=><Item product={p} />)}
+        {products.slice(0,9).map((p:Interfaces.Product)=><Item key={`home-products-inner-${p.id}`} product={p} />)}
       </div>
     </div>
   )

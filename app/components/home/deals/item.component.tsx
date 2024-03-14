@@ -28,7 +28,6 @@ const Item:React.FC<ItemProps> = ({img,toDate,product}) => {
     }
 
   useEffect(()=>{
-    console.log(toDate)
     handleCountDown()
   },[])
 

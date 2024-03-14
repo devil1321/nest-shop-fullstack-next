@@ -27,7 +27,7 @@ const Figures = () => {
   return (
     <div className='home-figures px-2 md:px-0 my-12 '>
       <h2 className="font-bold text-2xl my-5">Categories</h2>
-      <div className='home-figures-items flex flex-wrap gap-3 justify-center'>
+      <div className='home-figures-items flex flex-wrap gap-3 justify-center lg:justify-start'>
         <Item img="/assets/home/figure-1.svg" title='Milks and Dairies' />
         <Item img="/assets/home/figure-2.svg" title='Wines & Alcohol' />
         <Item img="/assets/home/figure-3.svg" title='Clothing & Beauty' />

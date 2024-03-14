@@ -20,7 +20,7 @@ const Banner:React.FC<BannerProps> = ({img,heading,paragraph}) => {
       duration:1,
       scrollTrigger:{
         trigger:'.banner',
-        start:'1700px',
+        start:'-=100px',
         end:"+=100px",
     }})
     gsap.fromTo('.banner-details p',{ opacity:0 },{ 
@@ -28,7 +28,7 @@ const Banner:React.FC<BannerProps> = ({img,heading,paragraph}) => {
       duration:1,
       scrollTrigger:{
         trigger:'.banner',
-        start:'1700px',
+        start:'-=100px',
         end:"+=100px",
     }})
     gsap.fromTo('.banner-details button',{ x:-240 },{ 
@@ -36,14 +36,14 @@ const Banner:React.FC<BannerProps> = ({img,heading,paragraph}) => {
       duration:1,
       scrollTrigger:{
         trigger:'.banner',
-        start:'1700px',
+        start:'-=100px',
         end:"+=100px",
     }})
     gsap.fromTo('.banner-details input',{ opacity:0 },{
       opacity:1,
       scrollTrigger:{
         trigger:'.banner',
-        start:'1700px',
+        start:'-=100px',
         end:"+=100px",
     }})
   }
@@ -53,7 +53,7 @@ const Banner:React.FC<BannerProps> = ({img,heading,paragraph}) => {
   },[])
 
   return (
-    <div className='banner relative top-0 left-0 xl:min-w-[1060px] xl:h-[300px] rounded-lg overflow-hidden'>
+    <div className='banner my-12 relative top-0 xl:min-w-[1000px] xl:h-[300px] rounded-lg overflow-hidden'>
       <Image className='absolute top-0 left-0 w-[100%} h-[100%]' src={img} alt='banner-image' width={1300} height={400} />
       <div className="banner-details absolute top-24 left-10">
         <h2 className="text-4xl font-bold w-2/3 my-2">{heading}</h2>

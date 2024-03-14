@@ -9,14 +9,14 @@ const Provide = () => {
 
     const handleAnimate = () =>{
        gsap.registerPlugin(ScrollTrigger)
-       gsap.fromTo('.about-provide-item',{ y:-40, opacity:0 }, { 
+       gsap.fromTo('.about-provide-item',{ y:-60, opacity:0 }, { 
             y:0,
             opacity:1,
             stagger:0.2,
             scrollTrigger:{
                 trigger:'.about-provide',
                 start:'-100px',
-                end:'-100px'
+                end:'-100px',
             } 
        })
     }

@@ -1,4 +1,5 @@
 export interface Product{
+    id:number;
     img:string;
     event:string | null;
     title:string;
