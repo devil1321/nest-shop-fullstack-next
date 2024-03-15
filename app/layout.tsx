@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="container mx-auto relative top-0 left-0">
+        <div className="container">
           <Provider store={store}>
             <GlobalComponents.NavComponents.Nav />
             <WithProducts>

@@ -8,14 +8,17 @@ interface BannerProps{
     img:string;
     heading:string;
     paragraph:string;
+    isNeedFix?:boolean;
 }
 
-const Banner:React.FC<BannerProps> = ({img,heading,paragraph}) => {
+const Banner:React.FC<BannerProps> = ({img,heading,paragraph,isNeedFix}) => {
 
   const handleAnimate = () =>{
     gsap.registerPlugin(ScrollTrigger)
-    gsap.fromTo('.banner-details h2',{ x:500, opacity:0 },{ 
-      x:0, 
+    if(!isNeedFix){
+
+      gsap.fromTo('.banner-details h2',{ x:500, opacity:0 },{ 
+        x:0, 
       opacity:1,
       duration:1,
       scrollTrigger:{
@@ -45,7 +48,41 @@ const Banner:React.FC<BannerProps> = ({img,heading,paragraph}) => {
         trigger:'.banner',
         start:'-=100px',
         end:"+=100px",
-    }})
+      }})
+    }else{
+      gsap.fromTo('.banner-details h2',{ x:500, opacity:0 },{ 
+        x:0, 
+        opacity:1,
+        duration:1,
+        scrollTrigger:{
+          trigger:'.banner',
+          start:'+=1800px',
+          end:"+=1800px",
+      }})
+      gsap.fromTo('.banner-details p',{ opacity:0 },{ 
+        opacity:1,
+        duration:1,
+        scrollTrigger:{
+          trigger:'.banner',
+          start:'+=1800px',
+          end:"+=1800px",
+      }})
+      gsap.fromTo('.banner-details button',{ x:-240 },{ 
+        x:0,
+        duration:1,
+        scrollTrigger:{
+          trigger:'.banner',
+          start:'+=1800px',
+          end:"+=1800px",
+      }})
+      gsap.fromTo('.banner-details input',{ opacity:0 },{
+        opacity:1,
+        scrollTrigger:{
+          trigger:'.banner',
+          start:'+=1800px',
+          end:"+=1800px",
+      }})
+    }
   }
 
   useEffect(()=>{

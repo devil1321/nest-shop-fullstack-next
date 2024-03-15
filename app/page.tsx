@@ -3,7 +3,7 @@ import { HomeComponents } from "./components/home";
 
 export default function Home(props:any) {
   return (
-    <main className="container mx-auto">
+    <main className="home mx-auto">
       <div className="home-section-with-sidebar md:flex md:justify-between md:items-start">
         <GlobalComponents.SidebarComponents.FullSidebar />
         <div className="homve-section-with-sidebar-inner md:w-4/5">
@@ -20,6 +20,7 @@ export default function Home(props:any) {
         img="/assets/home/footer-img.png" 
         heading="Stay home & get your daily needs from our shop" 
         paragraph="Start You'r Daily Shopping with Nest Mart" 
+        isNeedFix={true}
       />
     </main>
   );
