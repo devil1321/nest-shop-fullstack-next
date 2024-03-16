@@ -10,3 +10,13 @@ export interface Product{
     rating:number;
     inCart:boolean;
 }
+
+export interface Blog{
+    id:number;
+    img:string;
+    describe:string;
+    title:string;
+    read_len:number;
+    views:number;
+    date:string;
+}

@@ -2,16 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { headers } from 'next/headers';
+import * as Interfaces from '@/app/controller/interfaces'
 
-interface Category{
-    id:number;
-    img:string;
-    category:string;
-}
+const useFetchBlogs = (url:string) => {
 
-const useFetchCategories = (url:string) => {
-
-  const [categories,setCategories] = useState<Category[]>([])
+  const [blogs,setBlogs] = useState<Interfaces.Blog[]>([])
 
   const handleFetch = async() =>{
     try{
@@ -19,10 +14,10 @@ const useFetchCategories = (url:string) => {
             "Content-Type":"application/json"
         }}) 
         const data = await res.data
-        setCategories([...data])
+        setBlogs([...data])
    } catch(err){
         console.log(err)
-        setCategories([])
+        setBlogs([])
    }
   }
 
@@ -30,7 +25,7 @@ const useFetchCategories = (url:string) => {
     handleFetch()
   },[url])
 
-  return [categories,setCategories]
+  return [blogs,setBlogs]
 }
 
-export default useFetchCategories
+export default useFetchBlogs

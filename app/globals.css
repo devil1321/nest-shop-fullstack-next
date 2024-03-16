@@ -122,4 +122,7 @@
   .about-teams-item:hover .about-teams-item-details{
     @apply -translate-y-10
   }
+  .blog-nav-category-menu,.blog-nav-many-menu {
+    display: none;
+  }
 }

@@ -1,0 +1,137 @@
+[
+    {
+        "id":1,
+        "img":"/assets/blog/blog-1.png",
+        "category":"Side Dish",
+        "title":"The Intermediate Guide to Healthy Food",
+        "date":"24 April 2023",
+        "views":126000,
+        "read_len":4
+    },
+    {
+        "id":2,
+        "img":"/assets/blog/blog-2.png",
+        "category":"Soups and Stews",
+        "title":"Summer Quinoa Salad Jars with Lemon Dill",
+        "date":"23 January 2024",
+        "views":116987,
+        "read_len":10
+    },
+    {
+        "id":3,
+        "img":"/assets/blog/blog-3.png",
+        "category":"Salad",
+        "title":"Caprese Chicken with Smashed Potatoes",
+        "date":"11 December 2022",
+        "views":109206,
+        "read_len":12
+    },
+    {
+        "id":4,
+        "img":"/assets/blog/blog-4.png",
+        "category":"Dessert",
+        "title":"Harissa Chickpeas with Whipped Feta",
+        "date":"24 May 2023",
+        "views":119000,
+        "read_len":9
+    },
+    {
+        "id":5,
+        "img":"/assets/blog/blog-5.png",
+        "category":"Breakfast",
+        "title":"Almond Butter Chocolate Chip Zucchini Bars",
+        "date":"14 March 2023",
+        "views":118000,
+        "read_len":12
+    },
+    {
+        "id":6,
+        "img":"/assets/blog/blog-6.png",
+        "category":"Vegan",
+        "title":"Smoky Beans & Greens Tacos with Aji Verde",
+        "date":"15 June 2023",
+        "views":136122,
+        "read_len":10
+    },
+    {
+        "id":7,
+        "img":"/assets/blog/blog-7.png",
+        "category":"Gluten Free",
+        "title":"Sticky Ginger Rice Bowls with Pickled Veg",
+        "date":"12 July 2024",
+        "views":134654,
+        "read_len":10
+    },
+    {
+        "id":8,
+        "img":"/assets/blog/blog-8.png",
+        "category":"Side Dish",
+        "title":"Creamy Garlic Sun-Dried Tomato Pasta",
+        "date":"31 May 2023",
+        "views":126333,
+        "read_len":11
+    },
+    {
+        "id":9,
+        "img":"/assets/blog/blog-9.png",
+        "category":"Dairy Free",
+        "title":"The Absolute Easiest Spinach and Pizza",
+        "date":"31 January 2024",
+        "views":136442,
+        "read_len":11
+    },
+    {
+        "id":10,
+        "img":"/assets/blog/blog-10.png",
+        "category":"Salad",
+        "title":"Sticky Ginger Rice Bowls with Pickled",
+        "date":"12 April 2023",
+        "views":116245,
+        "read_len":11
+    },
+    {
+        "id":11,
+        "img":"/assets/blog/blog-11.png",
+        "category":"Soups",
+        "title":"The Best Soft Chocolate Chip Cookies",
+        "date":"23 March 2023",
+        "views":155084,
+        "read_len":4
+    },
+    {
+        "id":12,
+        "img":"/assets/blog/blog-12.png",
+        "category":"Vegetarian",
+        "title":"Baked Mozzarella Chicken Rolls",
+        "date":"21 July 2023",
+        "views":146432,
+        "read_len":5
+    },
+    {
+        "id":13,
+        "img":"/assets/blog/blog-13.png",
+        "category":"Dessert",
+        "title":"The Best Avocado Egg Salad",
+        "date":"30 April 2023",
+        "views":226123,
+        "read_len":4
+    },
+    {
+        "id":14,
+        "img":"/assets/blog/blog-14.png",
+        "category":"Vegetarian",
+        "title":"The litigants on the screen are not actors",
+        "date":"1 Febuary 2024",
+        "views":326123,
+        "read_len":7
+    },
+    {
+        "id":15,
+        "img":"/assets/blog/blog-5.png",
+        "category":"Vegetarian",
+        "title":"The litigants on the screen are not actors",
+        "date":"1 Febuary 2024",
+        "views":426123,
+        "read_len":4
+    }
+]
