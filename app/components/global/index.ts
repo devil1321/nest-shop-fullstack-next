@@ -4,6 +4,8 @@ import { SidebarComponents } from "./sidebar";
 import Product from "./product.component";
 import Banner from "./banner.component";
 import Path from "./path.component";
+import Gallery from "./gallery.component";
+import Tags from "./tags.component";
 
 export const GlobalComponents = {
     NavComponents,
@@ -11,5 +13,7 @@ export const GlobalComponents = {
     SidebarComponents,
     Product,
     Banner,
-    Path
+    Path,
+    Gallery,
+    Tags
 }

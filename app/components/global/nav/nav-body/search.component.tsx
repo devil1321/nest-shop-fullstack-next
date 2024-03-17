@@ -81,7 +81,7 @@ const Search = () => {
             <Image className='opacity-50' src="/assets/global/magnifer-icon.png" alt="magnifier" width={20} height={20} />
             {searchMatches.length > 0 && 
                 <div className="nav-body-search-matches absolute w-[100%] z-10 top-10 left-1/2 -translate-x-1/2 bg-white border-[1px] border-slate-200 shadow-lg shadow-gray-500">
-                    {searchMatches.map((m:string) => <div className="nav-body-search-match p-2 hover:bg-slate-200 cursor-pointer">{m}</div>)}
+                    {searchMatches.map((m:string) => <div key={`match-key-${m}`} className="nav-body-search-match p-2 hover:bg-slate-200 cursor-pointer">{m}</div>)}
                 </div>
             }  
           </div>

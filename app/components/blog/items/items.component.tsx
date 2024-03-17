@@ -5,7 +5,7 @@ import * as Interfaces from '@/app/controller/interfaces'
 const Items:React.FC<{blogs:any}> = ({blogs}) => {
   return (
     <div className='blog-items w-[100%] md:w-[70%] lg:w-[80%] flex flex-wrap justify-between items-start gap-3'>
-      {blogs.map((b:Interfaces.Blog) => <Item blog={b} />)}
+      {blogs.map((b:Interfaces.Blog) => <Item key={`blog-key-${b}`} blog={b} />)}
     </div>
   )
 }

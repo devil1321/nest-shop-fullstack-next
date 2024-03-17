@@ -14,7 +14,7 @@ export interface Product{
 export interface Blog{
     id:number;
     img:string;
-    describe:string;
+    category:string;
     title:string;
     read_len:number;
     views:number;

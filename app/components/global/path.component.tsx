@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 const Path:React.FC<{paths:string[]}> = ({paths}) => {
 
-  const pathname = usePathname()
+  const pathname = usePathname() as string
   let start_path = pathname.slice(1,pathname.length)
   start_path = start_path[0].toUpperCase() + start_path.slice(1,start_path.length)
 
@@ -16,9 +16,9 @@ const Path:React.FC<{paths:string[]}> = ({paths}) => {
         <div className='font-bold'>{start_path} &gt;</div>
         {paths.map((path:string,index:number)=>{
             if(index < paths.length - 1){
-                return <div className='mx-2 font-bold'>{path} &gt;</div>
+                return <div key={`path-key-${index}`} className='mx-2 font-bold'>{path} &gt;</div>
             }else{
-                return <div className='mx-2 font-bold'>{path}</div>
+                return <div key={`path-key-${index}`} className='mx-2 font-bold'>{path}</div>
             }
         })}
       </div>
