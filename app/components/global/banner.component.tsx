@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 interface BannerProps{
     img:string;
