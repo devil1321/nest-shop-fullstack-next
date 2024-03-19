@@ -20,6 +20,12 @@ export const setAboutCarouselImageSrc = (src:string) => (dispatch:Dispatch) =>{
         aboutCarouselMainImageSrc:src
     })
 }
+export const setDetailsCarouselImageSrc = (src:string) => (dispatch:Dispatch) =>{
+    dispatch({
+        type:UITypes.UI_DETAILS_CAROUSEL_SET_MAIN_IMAGE,
+        detailsCarouselMainImageSrc:src
+    })
+}
 
 
 

@@ -5,12 +5,14 @@ interface InitState {
     language:string;
     currency:string;
     aboutCarouselMainImageSrc:string;
+    detailsCarouselMainImageSrc:string;
 }
 
 const initState:InitState = {
     language:'English',
     currency:'USD',
     aboutCarouselMainImageSrc:'/assets/about/carousel-1.png',
+    detailsCarouselMainImageSrc:'/assets/global/product-1.png'
 }
 
 export default (state:InitState = initState,action:UIActions) =>{
@@ -29,6 +31,11 @@ export default (state:InitState = initState,action:UIActions) =>{
             return {
                 ...state,
                 aboutCarouselMainImageSrc:action.aboutCarouselMainImageSrc
+            }
+        case UITypes.UI_DETAILS_CAROUSEL_SET_MAIN_IMAGE:
+            return {
+                ...state,
+                detailsCarouselMainImageSrc:action.detailsCarouselMainImageSrc
             }
         default:
             return {

@@ -20,3 +20,8 @@ export interface Blog{
     views:number;
     date:string;
 }
+
+export interface CartItem{
+    id:number;
+    quantity:number;
+}
