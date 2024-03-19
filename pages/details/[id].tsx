@@ -6,11 +6,12 @@ import { BlogDetailsComponents } from '@/app/components/blog-details';
 import FullSidebar from '@/app/components/global/sidebar/full-sidebar.component';
 import "../../app/globals.css";
 import Banner from '@/app/components/global/banner.component';
+import { DetailsComponents } from '@/app/components/details';
 
 const Details:React.FC<{ product:Interfaces.Product }> = ({ product }) => {
   return (
   <div className='details'>
-    {product.id}
+    <DetailsComponents.CarouselComponents.Carousel product={product} productImgSrc={product.img} />
   </div>
   );
 };

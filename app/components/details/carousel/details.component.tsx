@@ -1,72 +1,58 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image';
-import { useDispatch } from 'react-redux';
-import * as UIActionCreators from '@/app/controller/action-creators/ui.action-creators'
-import { bindActionCreators } from 'redux';
+import React, { use, useEffect, useState } from 'react'
+import * as Interfaces from '@/app/controller/interfaces'
+import Link from 'next/link'
+import useQuantity from '@/app/hooks/useQuantity'
+import { useDispatch,useSelector } from 'react-redux'
+import { State } from '@/app/controller/reducers/root.reducer'
+import * as ShopActions from '@/app/controller/action-creators/shop.action-creators'
+import * as ApiActions from '@/app/controller/action-creators/api.action-creators'
+import { bindActionCreators } from 'redux'
 
-interface DetailsProps{
-    title:string;
-    paragraph_1:string;
-    paragraph_2:string;
-}
 
-const Details:React.FC<DetailsProps> = ({title,paragraph_1,paragraph_2}) => {
+const Details:React.FC<{ product:Interfaces.Product }> = (props) => {
 
+  const { products } = useSelector((state:State) => state.api)
   const dispatch = useDispatch()
-  const UIActions = bindActionCreators(UIActionCreators,dispatch)
+  const shopActions = bindActionCreators(ShopActions,dispatch)
+  const APIActions = bindActionCreators(ApiActions,dispatch)
 
-  const [count,setCount] = useState<number>(1)
+  const [product,setProduct] = useState<Interfaces.Product>(props.product)
+  
+  const [quantity,setQuantity] = useQuantity(props.product.id) as any
 
-  const handleInitSelect = () =>{
-    const items = document.querySelectorAll('.about-carousel-sm-item-wrapper') as NodeListOf<HTMLDivElement>
-    items[0].classList.add('border-green-300')
-  }
-
-  const handleSelect = () =>{
-    const items = document.querySelectorAll('.about-carousel-sm-item-wrapper') as NodeListOf<HTMLDivElement>
-    items.forEach(i => {
-      i.classList.remove('border-green-300')
-    })
-    items[count - 1].classList.add('border-green-300')
-  }
-
-  const handleNext = () =>{
-    if(count < 4){
-      setCount(count + 1)
-    }else{
-      setCount(1)
-    }
-  }
-  const handlePrev = () =>{
-    if(count < 2){
-      setCount(4)
-    }else{
-      setCount(count - 1)
-    }
+  const handleProduct = () =>{
+    const productItem = products.find((p:Interfaces.Product) => p.id === props.product.id) as Interfaces.Product
+    setProduct(productItem)
   }
 
   useEffect(()=>{
-    handleInitSelect()
-  },[])
-
-  useEffect(()=>{
-    UIActions.setAboutCarouselImageSrc(`/assets/about/carousel-${count}.png`)
-    handleSelect()
-  },[count])
-
+    handleProduct()
+    if(products.length <= 0){
+      APIActions.setProducts()
+    }
+  },[props,products])
+  
   return (
-    <div className='about-carousel-details md:w-1/2 order-1 md:order-2'>
-      <h3 className="px-4 md:px-0 text-3xl font-bold">{title}</h3>
-      <p className="px-4 md:px-0 text-sm text-gray-500 my-2">{paragraph_1}</p>
-      <p className="px-4 md:px-0 text-sm text-gray-500 my-2">{paragraph_2}</p>
-      <div className="about-carousel-items-wrapper w-[100%] relative top-0 left-0">
-          <div onClick={()=>{
-            handlePrev()
-            }} className="about-carousel-item-prev absolute z-10 -left-2 top-1/2 -translate-y-1/2 transition-all px-3 py-1 cursor-pointer bg-green-300 opacity-70 hover:bg-green-500 hover:opacity-100 rounded-full text-white font-bold text-lg">&lt;</div> 
-          <div onClick={()=>{
-            handleNext()
-            }} className="about-carousel-item-next absolute z-10 -right-2 top-1/2 -translate-y-1/2 transition-all px-3 py-1 cursor-pointer bg-green-300 opacity-70 hover:bg-green-500 hover:opacity-100 rounded-full text-white font-bold text-lg">&gt;</div> 
+    <div className='details-carousel-details md:w-1/2 order-1 md:order-2'>
+      <div className="text-red-500 py-2 bg-red-200 rounded-md text-center">{product?.event}</div>
+      <h3 className="px-4 md:px-0 text-3xl my-5 font-bold">{product?.title}</h3>
+      <p className="text-yellow-600 my-2 text-sm">Rating &#9734;{product?.rating}</p>
+      <div className="details-carousel-details-price my-2 flex justify-start items-center gap-5">
+        <div className="px-5 py-2 text-green-500 font-bold rounded-md bg-green-300">${product?.price}</div>
+        <div className="px-5 py-2 text-red-500 bg-red-300 font-bold rounded-md line-through">${product?.prevPrice}</div>
+      </div>
+      <p className="text-gray-500 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum quibusdam omnis porro culpa sapiente nesciunt iusto. Est, reprehenderit hic suscipit laboriosam sunt ipsum molestiae vitae exercitationem voluptate tempora ad cupiditate rem. Dolore inventore maxime sit? Amet consequuntur impedit deserunt nam nostrum vel saepe distinctio officiis odio eum dolorem minima beatae illo voluptatem, incidunt quia facere asperiores dolorum dolores? Adipisci reiciendis autem sunt. Autem quisquam cupiditate nihil eos maiores amet voluptatum, ullam illum nam atque voluptas ut consequatur nesciunt aliquam perferendis, suscipit quae officiis! Consectetur perferendis a eligendi officia fuga libero, voluptatibus nesciunt aperiam ipsa, blanditiis modi laudantium labore ducimus tempore.</p>
+      <div className="details-carousel-details-buttons my-5 flex gap-3">
+        {!product?.inCart 
+          ? <button className='bg-yellow-500 rounded-md font-bold text-white px-5 py-2 hover:bg-green-300'>Add To Cart</button>
+          : <button className='bg-green-500 rounded-md font-bold text-white px-5 py-2 hover:bg-green-300'>In Cart</button>}
+        <Link className='bg-yellow-500 hover:bg-green-700 rounded-md px-5 py-2 text-white font-bold' href="/products">Continue Shopping</Link>
+      </div>
+      <div className="details-carousel-details-quantity flex gap-3">
+        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center'>-</div>
+        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center'>{quantity}</div>
+        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center'>+</div>
       </div>
     </div>
   )

@@ -82,13 +82,13 @@ const handleResetPostions = () =>{
   posy.current = 1
 }
 const handleInitSelect = () =>{
-  const items = document.querySelectorAll('.details-carousel-sm-item-wrapper') as NodeListOf<HTMLDivElement>
+  const items = document.querySelectorAll('.details-sm-item-wrapper') as NodeListOf<HTMLDivElement>
   items[0].classList.remove('border-transparent')
   items[0].classList.add('border-green-300')
 }
 
 const handleSelect = () =>{
-  const items = document.querySelectorAll('.details-carousel-sm-item-wrapper') as NodeListOf<HTMLDivElement>
+  const items = document.querySelectorAll('.details-sm-item-wrapper') as NodeListOf<HTMLDivElement>
   items.forEach(i => {
     i.classList.remove('border-green-300')
   })
@@ -141,27 +141,27 @@ useEffect(()=>{
   },[detailsCarouselMainImageSrc])
   
   return (
-    <div className="details-carouselp-wrapper">
-    <div ref={wrapperRef} className="about-carousel-view my-2 md:my-0 order-2 md:order-1 mx-auto overflow-hidden relative top-0 left-0 flex flex-wrap justify-start items-start w-[350px] h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[600px] xl:h-[700px]">
+    <div className="details-carousel-wrapper w-[350px] h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[600px] xl:h-[700px]">
+    <div ref={wrapperRef} className="about-carousel-view my-2 md:my-0 order-2 md:order-1 mx-auto overflow-hidden relative top-0 left-0 flex flex-wrap justify-start items-start">
       {cells.map((c:Cell,i:number)=>{
         return <div key={`cell-${i}`} style={{
           backgroundImage:`url('${detailsCarouselMainImageSrc}')`,
-          backgroundSize:`2900%`,
+          backgroundSize:`2000%`,
           backgroundPositionX:c.w + 'px',
           backgroundPositionY:c.h + 'px'
         }} className="about-carousel-cell transform-cpu w-[50px] h-[50px]"></div>
       })}
       </div>
-      <div className="details-carousel-images flex gap-3 items-center">
-        <div className="details-carousel-controls relative top-1/2 -translate-y-1/2 left-0 flex justify-between items-center">
-          <div onClick={()=>handlePrev()} className="details-carousel-prev h-8 w-8 rounded-full bg:grenn-300 hover:bg-green-500 font-bold text-white flex justify-center items-center">&lt;</div>
-          <div onClick={()=>handleNext()} className="details-carousel-next h-8 w-8 rounded-full bg:grenn-300 hover:bg-green-500 font-bold text-white flex justify-center items-center">&gt;</div>
-        </div>
-        {images.map((src:string) => <div onClick={()=>UIActions.setDetailsCarouselImageSrc(src)} className='p-2 border-[1px] border-transparent details-item-sm-wrapper'>
+      <div className="details-carousel-images my-5 flex gap-3 items-center">
+        {images.map((src:string,i:number) => <div onClick={()=>{
+          UIActions.setDetailsCarouselImageSrc(src)
+          setCount(i + 1)
+          handleSelect()
+        }} className='p-2 border-[1px] border-transparent w-[200px] h-[100px] overflow-hidden details-sm-item-wrapper'>
                                       <Image src={src} alt='details-carousel-item-image' width={200} height={100} />
                                     </div>)}
+        </div>
       </div>
-    </div>
   )
 }
 
