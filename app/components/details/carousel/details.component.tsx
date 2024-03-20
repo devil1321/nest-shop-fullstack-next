@@ -45,14 +45,14 @@ const Details:React.FC<{ product:Interfaces.Product }> = (props) => {
       <p className="text-gray-500 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum quibusdam omnis porro culpa sapiente nesciunt iusto. Est, reprehenderit hic suscipit laboriosam sunt ipsum molestiae vitae exercitationem voluptate tempora ad cupiditate rem. Dolore inventore maxime sit? Amet consequuntur impedit deserunt nam nostrum vel saepe distinctio officiis odio eum dolorem minima beatae illo voluptatem, incidunt quia facere asperiores dolorum dolores? Adipisci reiciendis autem sunt. Autem quisquam cupiditate nihil eos maiores amet voluptatum, ullam illum nam atque voluptas ut consequatur nesciunt aliquam perferendis, suscipit quae officiis! Consectetur perferendis a eligendi officia fuga libero, voluptatibus nesciunt aperiam ipsa, blanditiis modi laudantium labore ducimus tempore.</p>
       <div className="details-carousel-details-buttons my-5 flex gap-3">
         {!product?.inCart 
-          ? <button className='bg-yellow-500 rounded-md font-bold text-white px-5 py-2 hover:bg-green-300'>Add To Cart</button>
+          ? <button className='bg-yellow-500 rounded-md font-bold text-white px-5 py-2 hover:bg-green-300' onClick={()=>shopActions.addToCart(product?.id,quantity)}>Add To Cart</button>
           : <button className='bg-green-500 rounded-md font-bold text-white px-5 py-2 hover:bg-green-300'>In Cart</button>}
         <Link className='bg-yellow-500 hover:bg-green-700 rounded-md px-5 py-2 text-white font-bold' href="/products">Continue Shopping</Link>
       </div>
       <div className="details-carousel-details-quantity flex gap-3">
-        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center'>-</div>
+        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center' onClick={()=>shopActions.decrement(product?.id,1)}>-</div>
         <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center'>{quantity}</div>
-        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center'>+</div>
+        <div className='rounded-md text-white cursor-pointer bg-green-300 hover:bg-green-500 font-bold w-8 h-8 flex justify-center items-center' onClick={()=>shopActions.increment(product?.id,1)}>+</div>
       </div>
     </div>
   )

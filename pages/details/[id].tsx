@@ -12,6 +12,8 @@ const Details:React.FC<{ product:Interfaces.Product }> = ({ product }) => {
   return (
   <div className='details'>
     <DetailsComponents.CarouselComponents.Carousel product={product} productImgSrc={product.img} />
+    <DetailsComponents.TabsComponents.Tabs />
+    <DetailsComponents.Related />
   </div>
   );
 };

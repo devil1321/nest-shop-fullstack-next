@@ -1,29 +1,48 @@
 import { ShopTypes } from "../types"
 import { ShopActions } from "../actions/shop.actions"
-import store from "../store";
+import * as Interfaces from "../interfaces"
 
 interface InitState {
-    currency:number;
-    orderTrackingCount:number;
-    cartCount:number;
-    cart:any[];
-    products:any[];
+    cart:Interfaces.CartItem[];
+    summary:number;
 }
 
 const initState:InitState = {
-    currency:1,
-    orderTrackingCount:0,
-    cartCount:0,
     cart:[],
-    products:[]
+    summary:0
 }
 
 export default (state:InitState = initState,action:ShopActions) =>{
     switch(action.type){
-        case ShopTypes.SHOP_CHANGE_CURRENCY:
+        case ShopTypes.SHOP_ADD_TO_CART:
             return{
                 ...state,
-                currency:action.currency
+                cart:action.cart
+            }
+        case ShopTypes.SHOP_INCREMENT:
+            return{
+                ...state,
+                cart:action.cart
+            }
+        case ShopTypes.SHOP_DECREMENT:
+            return{
+                ...state,
+                cart:action.cart
+            }
+        case ShopTypes.SHOP_REMOVE_FROM_CART:
+            return{
+                ...state,
+                cart:action.cart
+            }
+        case ShopTypes.SHOP_CLEAR_CART:
+            return{
+                ...state,
+                cart:action.cart
+            }
+        case ShopTypes.SHOP_SUMMARY:
+            return{
+                ...state,
+                summary:action.summary
             }
         default:
             return {

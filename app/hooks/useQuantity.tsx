@@ -9,15 +9,17 @@ const useQuantity = (id:number) => {
   const { cart } = useSelector((state:State) => state.shop)
 
   const [quantity,setQuantity] = useState<number>(0)
+  const [item,setItem] = useState<Interfaces.CartItem>()
 
   const handleQuantity = () =>{
-    const item = cart.find((i:Interfaces.CartItem) => i.id === id) as Interfaces.CartItem
-    setQuantity(item?.quantity)
+    const tmpItem = cart.find((i:Interfaces.CartItem) => i.id === id) as Interfaces.CartItem
+    setItem(tmpItem)
+    setQuantity(tmpItem?.quantity)
   }
 
   useEffect(()=>{
     handleQuantity()
-  },[id])
+  },[id,cart.length,item?.quantity])
 
   return [quantity,setQuantity]
 }

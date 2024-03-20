@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { State } from '@/app/controller/reducers/root.reducer'
 import * as UIActionCreators from '@/app/controller/action-creators/ui.action-creators'
-import * as ShopActionCreators from '@/app/controller/action-creators/shop.action-creators'
+import * as APIActionCreators from '@/app/controller/action-creators/api.action-creators'
 
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
     const dispatch = useDispatch()
     const UIState = useSelector((state:State) => state.ui)
     const UIActions = bindActionCreators(UIActionCreators,dispatch)
-    const ShopActions = bindActionCreators(ShopActionCreators,dispatch)
+    const APIActions = bindActionCreators(APIActionCreators,dispatch)
 
 
     const [isLanguageMenu,setIsLanguageMenu] = useState<boolean>(false)
@@ -59,17 +59,17 @@ const Header = () => {
                         <div className="nav-header-menu-item-inner-menu absolute top-7 left-1/2 border-[1px] border-slate-200 rounded-lg bg-white shadow-lg shadow-grey-300 p-2">
                             <p className='px-2 py-1 hover:bg-slate-200 rounded-md cursor-pointer' onClick={()=>{
                                 UIActions.changeCurrency('USD')
-                                ShopActions.changeCurrency('USD')
+                                APIActions.changeCurrency('USD')
                                 setIsCurrencyMenu(false)
                             }}>USD</p>
                             <p className='px-2 py-1 hover:bg-slate-200 rounded-md cursor-pointer' onClick={()=>{
                                 UIActions.changeCurrency('EU')
-                                ShopActions.changeCurrency('EU')
+                                APIActions.changeCurrency('EU')
                                 setIsCurrencyMenu(false)
                             }}>EU</p>
                             <p className='px-2 py-1 hover:bg-slate-200 rounded-md cursor-pointer' onClick={()=>{
                                 UIActions.changeCurrency('PLN')
-                                ShopActions.changeCurrency('PLN')
+                                APIActions.changeCurrency('PLN')
                                 setIsCurrencyMenu(false)
                             }}>PLN</p>
                         </div>}

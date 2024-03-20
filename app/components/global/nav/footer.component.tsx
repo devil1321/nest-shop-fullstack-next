@@ -96,42 +96,34 @@ const Footer = () => {
         <span className='block my-1 h-[2px] w-[2x] bg-black'></span>
         <span className='block my-1 h-[2px] w-[2x] bg-black'></span>
       </div>
-      <div ref={menuRef} className="nav-footer-menu flex flex-col justify-center items-center gap-5 md:flex-wrap md:flex-row absolute top-[200px] w-[90%] md:w-fit left-1/2 md:top-0 md:left-0 pb-20 md:pb-0 bg-white rounded-lg shadow-lg shadow-gray-300 md:shadow-none md:relative">
-        <Link href="#" className='nav-footer-menu-item flex items-center'>
+      <div ref={menuRef} className="nav-footer-menu flex flex-col justify-center items-center gap-8 md:flex-wrap md:flex-row absolute top-[200px] w-[90%] md:w-fit left-1/2 md:top-0 md:left-0 pb-20 md:pb-0 bg-white rounded-lg shadow-lg shadow-gray-300 md:shadow-none md:relative">
+        <Link href="/products" className='nav-footer-menu-item flex items-center'>
             <Image className='mr-2' src="/assets/global/deals-icon.png" alt='chevron' width={20} height={20}/>
             <span>Deals</span>
         </Link>
-        <Link href="#" className='nav-footer-menu-item flex items-center'>
+        <Link href="/" className='nav-footer-menu-item flex items-center'>
             <span>Home</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
-        <Link href="#" className='nav-footer-menu-item flex items-center'>
+        <Link href="/about" className='nav-footer-menu-item flex items-center'>
             <span>About</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
-        <Link href="#" className='nav-footer-menu-item flex items-cent items-center'>
+        <Link href="/products" className='nav-footer-menu-item flex items-cent items-center'>
             <span>Shop</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
         <Link href="#" className='nav-footer-menu-item flex items-center'>
             <span>Vendors</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
         <Link href="#" className='nav-footer-menu-item flex items-center'>
             <span>Mega menu</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
-        <Link href="#" className='nav-footer-menu-item flex items-center'>
+        <Link href="/blog" className='nav-footer-menu-item flex items-center'>
             <span>Blog</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
         <Link href="#" className='nav-footer-menu-item flex items-center'>
             <span>Pages</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
-        <Link href="#" className='nav-footer-menu-item flex items-center'>
+        <Link href="/contact" className='nav-footer-menu-item flex items-center'>
             <span>Contact</span>
-            <Image className='ml-2' src="/assets/global/chevron.png" alt='chevron' width={10} height={10}/>
         </Link>
       </div>
       <div ref={supportRef} className="nav-footer-support w-max absolute bottom-5 left-1/2 -translate-x-1/2 md:relative md:bottom-0 md:left-0 md:-translate-x-0 flex items-center">

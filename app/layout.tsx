@@ -6,7 +6,7 @@ import { Provider, useDispatch } from "react-redux";
 import store from "./controller/store";
 import { GlobalComponents } from "./components/global";
 import { useEffect } from "react";
-import * as APIActions from '@/app/controller/action-creators/api.action-creators'
+import * as ApiActions from '@/app/controller/action-creators/api.action-creators'
 import { bindActionCreators } from "redux";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,10 +37,10 @@ export default function RootLayout({
 const WithProducts = ({children}:{children:React.ReactNode}) =>{
 
   const dispatch = useDispatch()
-  const apiActions = bindActionCreators(APIActions,dispatch)
+  const APIActions = bindActionCreators(ApiActions,dispatch)
 
   useEffect(()=>{
-    apiActions.setProducts()
+    APIActions.setProducts()
   },[])
 
   return(

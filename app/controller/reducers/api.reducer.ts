@@ -12,6 +12,12 @@ const initState:InitState = {
 
 export default (state:InitState = initState,action:APIActions) =>{
     switch(action.type){
+        case APITypes.API_CHANGE_CURRENCY:
+            return{
+                ...state,
+                products:action.products,
+                currency:action.currency
+            }
         case APITypes.API_SET_PRODUCTS:
             return{
                 ...state,

@@ -71,7 +71,7 @@ const Filter = () => {
             </div>
             <div className="sidebar-filter-checkbox">
               <input className='mr-2 accent-green-500' type="checkbox" name="" id="" />
-              <span>GreRefurbished (27)en</span>
+              <span>Green Refurbished (27)</span>
             </div>
             <div className="sidebar-filter-checkbox">
               <input className='mr-2 accent-green-500' type="checkbox" name="" id="" />

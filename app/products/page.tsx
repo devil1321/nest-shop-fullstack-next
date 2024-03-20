@@ -14,8 +14,8 @@ const Products = () => {
       <GlobalComponents.Path paths={['Shop']}/>
       <div className="products-inner md:flex md:justify-between md:items-start">
         <GlobalComponents.SidebarComponents.FullSidebar />
-        <div className="products-items p-5 flex flex-wrap">
-          {products.map((p:Interfaces.Product) => <GlobalComponents.Product className='md:w-1/2 lg:w-1/4' product={p} />)}
+        <div className="products-items p-5 flex flex-wrap gap-3">
+          {products.map((p:Interfaces.Product) => <GlobalComponents.Product key={`product-key-products-${p.id}`} className='md:w-1/3 xl:min-w-[240px] my-2 xl:w-1/5' product={p} />)}
         </div>
       </div>
       <GlobalComponents.Banner 

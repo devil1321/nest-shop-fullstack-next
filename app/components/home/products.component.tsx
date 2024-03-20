@@ -12,7 +12,7 @@ const Products = () => {
 
   const handleAnimate = () =>{
     gsap.registerPlugin(ScrollTrigger)
-    gsap.fromTo('.product',{y:-50,opacity:0},{y:0,opacity:1,stagger:0.5,scrollTrigger:{
+    gsap.fromTo('.product',{y:-50,opacity:0,scale:0},{y:0,opacity:1,stagger:0.5,scale:1,scrollTrigger:{
       trigger:'.home-products',
       scrub:6,
       start:'-=100px',
