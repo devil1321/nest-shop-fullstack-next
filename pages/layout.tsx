@@ -12,23 +12,22 @@ function Layout({ children }:{children:React.ReactNode}) {
 
   const dispatch = useDispatch()
   const APIActions = bindActionCreators(ApiActions,dispatch)
-  const { data,route,token } = useSelector((state:State) => state.api)
+  const { data,user,route,token } = useSelector((state:State) => state.api)
   const router = useRouter()
 
   const handleInit = () =>{
     router.push(route)
   }
-
   useEffect(()=>{
-      APIActions.setProducts()
-      if(!data){
-          APIActions.getUser()
-        }
-  },[])
+    APIActions.setProducts()
+    if(!token){
+      APIActions.getUser()
+    }
+  },[user,token,route])
 
   useEffect(()=>{
     handleInit()
-  },[token,data])
+  },[token,user,route])
 
   return (
     <div className="container">

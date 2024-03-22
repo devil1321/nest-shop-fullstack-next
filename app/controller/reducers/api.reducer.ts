@@ -4,15 +4,17 @@ import * as Interfaces from '@/app/controller/interfaces'
 
 interface InitState {
     data:any;
+    user:any;
     products:Interfaces.Product[]
-    token:string;
+    token:any;
     route:string;
 }
 
 const initState:InitState = {
     data:null,
     products:[],
-    token:'',
+    token:null,
+    user:null,
     route:'/credentials'
 }
 
@@ -32,12 +34,18 @@ export default (state:InitState = initState,action:APIActions) =>{
         case APITypes.API_REGISTER:
             return{
                 ...state,
-                data:action.data
+                user:action.user,
+                token:action.token,
+                data:action.data,
+                route:action.route
             }
         case APITypes.API_LOGIN:
             return{
                 ...state,
-                data:action.data
+                user:action.user,
+                token:action.token,
+                data:action.data,
+                route:action.route
             }
         case APITypes.API_LOGOUT:
             return{
@@ -48,8 +56,28 @@ export default (state:InitState = initState,action:APIActions) =>{
         case APITypes.API_GET_USER:
             return{
                 ...state,
-                data:action.data,
+                user:action.user,
                 route:action.route
+            }
+        case APITypes.API_UPDATE_CART:
+            return{
+                ...state,
+                data:action.data
+            }
+        case APITypes.API_UPDATE_PROFILE:
+            return{
+                ...state,
+                data:action.data
+            }
+        case APITypes.API_UPDATE_CART:
+            return{
+                ...state,
+                data:action.data
+            }
+        case APITypes.API_PAY:
+            return{
+                ...state,
+                data:action.data
             }
         default:
             return {

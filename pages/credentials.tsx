@@ -8,10 +8,9 @@ import { State } from '@/app/controller/reducers/root.reducer'
 
 const Credentials = () => {
 
-  const { data,route,token } = useSelector((state:State) => state.api)
+  const {data, user,route,token } = useSelector((state:State) => state.api)
   const router = useRouter()
 
-  const [isLoad,setIsLoad] = useState<boolean>(false)
   const [isRegister,setIsRegister] = useState<boolean>(false)
   const [registerFormData,setRegisterFormData] = useState<any>({
     nickname:'',
@@ -47,7 +46,7 @@ const Credentials = () => {
 
   const handleSubmitLogin = (e:any) =>{
     e.preventDefault()
-    const formData = new FormData(e.target)
+    APIActions.login(loginFormData)
   }
   const handleSubmitRegister = (e:any) =>{
     e.preventDefault()
@@ -57,15 +56,16 @@ const Credentials = () => {
   const handleInit = () =>{
     router.push(route)
   }
+  
   useEffect(()=>{
-    if(!data){
+    if(!token){
       APIActions.getUser()
     }
-  },[])
+  },[user,token,route])
 
   useEffect(()=>{
     handleInit()
-  },[token,data])
+  },[token,user,route])
 
   return (
     <div>
@@ -75,11 +75,11 @@ const Credentials = () => {
             <form action="" onSubmit={(e)=>handleSubmitLogin(e)} encType='multipart/form-data'>
               <div className="credentials-register-field">
                 <label htmlFor="">Email:</label>
-                <input type="email" name="nickname" onChange={(e)=>handleChangeLogin(e)} value={loginFormData.email} />
+                <input type="email" name="email" onChange={(e)=>handleChangeLogin(e)} value={loginFormData.email} />
               </div>
               <div className="credentials-register-field">
                 <label htmlFor="">Password:</label>
-                <input type="password" name="email" onChange={(e)=>handleChangeLogin(e)} value={loginFormData.password}/>
+                <input type="password" name="password" onChange={(e)=>handleChangeLogin(e)} value={loginFormData.password}/>
               </div>
               <button className='' onClick={()=>setIsRegister(true)}>Register</button>
               <button type="submit">Login</button>

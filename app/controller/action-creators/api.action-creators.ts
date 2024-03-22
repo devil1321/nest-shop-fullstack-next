@@ -2,20 +2,8 @@ import { Dispatch } from "redux"
 import { APITypes } from "../types"
 import axios from "axios"
 import * as Interfaces from '../interfaces'
+import { getToken } from '@/app/controller/lib/get-token'
 import store from "../store"
-
-const getToken = () =>{
-    if(typeof window !== 'undefined'){
-        let access = ''
-        const token = localStorage.getItem('jwt')
-        if(token){
-            access = token
-        }else{
-            access = store.getState().api.token
-        }
-        return access
-    }
-}
 
 export const changeCurrency = (currency:string) => async(dispatch:Dispatch) =>{
     try{
@@ -50,8 +38,6 @@ export const changeCurrency = (currency:string) => async(dispatch:Dispatch) =>{
         console.log(err)
     }
 }
-
-
 export const setProducts = () => async(dispatch:Dispatch) =>{
     try{
         const res = await axios.get('/assets/products.json')
@@ -64,20 +50,20 @@ export const setProducts = () => async(dispatch:Dispatch) =>{
         console.log(err)
     }
 }
-
 export const getUser = () => async (dispatch:Dispatch)=>{
     const token = getToken()
+    const { user } = store.getState().api
     try{
-        const res = await axios.post('/api/get-user',{},{
+        const res = await axios.post('/api/get-user',user,{
             headers:{
-                'Authorization':token
+                'Authorization':`Bearer ${token}`
             }
         })
         const data = await res.data
         dispatch({
             type:APITypes.API_GET_USER,
-            data:data,
-            route:"/"
+            user:data?.user?.data ? data.user.data : data.user,
+            route:!token ? "/credentials" : "/"
         })
     }catch(err){
         dispatch({
@@ -87,7 +73,6 @@ export const getUser = () => async (dispatch:Dispatch)=>{
         })
     }
 }
-
 export const register = (formData:any) => async(dispatch:Dispatch) =>{
     try{
         const res = await axios.post('/api/register',formData,{
@@ -98,12 +83,15 @@ export const register = (formData:any) => async(dispatch:Dispatch) =>{
         const data = await res.data
         if(typeof window !== 'undefined'){
             if(data?.token){
-                localStorage.setItem('jwt',data.token)
+                localStorage.setItem('jwt',data?.token)
             }
         }
         dispatch({
             type:APITypes.API_REGISTER,
-            data:data
+            user:data?.user,
+            token:data?.token,
+            data:data,
+            route:data?.route
         })
     }catch(err){
         console.log(err)
@@ -114,7 +102,6 @@ export const register = (formData:any) => async(dispatch:Dispatch) =>{
     }
 
 }
-
 export const login = (formData:any) => async(dispatch:Dispatch) =>{
     try{
         const res = await axios.post('/api/login',formData,{
@@ -123,10 +110,17 @@ export const login = (formData:any) => async(dispatch:Dispatch) =>{
             }
         })
         const data = await res.data
+        if(typeof window !== 'undefined'){
+            if(data){
+                localStorage.setItem('jwt',data.token)
+            }
+        }
         dispatch({
             type:APITypes.API_LOGIN,
             data:data,
-            token:data.token
+            user:data.user,
+            token:data.token,
+            route:data.route
         })
     }catch(err){
         dispatch({
@@ -136,14 +130,62 @@ export const login = (formData:any) => async(dispatch:Dispatch) =>{
     }
 
 }
-
 export const logout = () => async(dispatch:Dispatch) =>{
     if(typeof window !== 'undefined'){
         localStorage.removeItem('jwt')
         dispatch({
             type:APITypes.API_LOGOUT,
-            token:'',
+            token:null,
             route:'/credentials'
+        })
+    }
+}
+export const updateCart = (cart:Interfaces.CartItem[],user:Interfaces.User) => async(dispatch:Dispatch) =>{
+    const token = getToken()
+    try{
+        const res = await axios.post('/api/update-cart',{
+            cart:cart,
+            user_id:user.id 
+        },{
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
+        })
+        const data = await res.data
+        dispatch({
+            type:APITypes.API_UPDATE_CART,
+            data:data
+        })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_UPDATE_CART,
+            data:{
+                msg:"Cart Not Updated"
+            }
+        })
+    }
+}
+export const updateProfile = (user:Interfaces.User) => async(dispatch:Dispatch) =>{
+    const token = getToken()
+    try{
+        const res = await axios.post('/api/update-profile',user,{
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
+        })
+        const data = await res.data
+        dispatch({
+            type:APITypes.API_UPDATE_CART,
+            data:data
+        })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_UPDATE_CART,
+            data:{
+                msg:"Profile Not Updated"
+            }
         })
     }
 }

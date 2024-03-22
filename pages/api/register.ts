@@ -31,11 +31,11 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                                             phone
                                         }
                                     }) as Interfaces.User
-                                    const token = `Bearer ${jwt.sign({
+                                    const token = jwt.sign({
                                         exp: Math.floor(Date.now() / 1000) + (60 * 60),
                                         data: User
-                                    }, process.env.JWT_SECRET as string)}`;   
-                                    res.json({user:User,token:token})
+                                    }, process.env.JWT_SECRET as string);   
+                                    res.json({user:User,token:token,route:"/"})
                                 }catch(err){
                                     console.log(err)
                                     console.log('User Not Created')

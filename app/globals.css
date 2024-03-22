@@ -139,7 +139,7 @@
   .about-teams-item:hover .about-teams-item-details{
     @apply -translate-y-10
   }
-  .blog-nav-category-menu,.blog-nav-many-menu {
+  .blog-nav-category-menu,.blog-nav-many-menu,.nav-body-profile-menu  {
     display: none;
   }
   .details-tabs-tab{

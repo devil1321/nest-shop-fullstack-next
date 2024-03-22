@@ -40,7 +40,7 @@ const WithProducts = ({children}:{children:React.ReactNode}) =>{
 
   const dispatch = useDispatch()
   const APIActions = bindActionCreators(ApiActions,dispatch)
-  const { data,route,token } = useSelector((state:State) => state.api)
+  const { user,route,token,data } = useSelector((state:State) => state.api)
   const router = useRouter()
 
   const handleInit = () =>{
@@ -49,14 +49,14 @@ const WithProducts = ({children}:{children:React.ReactNode}) =>{
   
   useEffect(()=>{
     APIActions.setProducts()
-    if(!data){
+    if(!token){
       APIActions.getUser()
     }
-  },[])
+  },[user,token,route])
 
   useEffect(()=>{
     handleInit()
-  },[token,data])
+  },[token,user,route])
 
   return(
     <div className="with-redux-container">{children}</div>

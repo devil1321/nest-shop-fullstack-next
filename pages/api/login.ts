@@ -1,10 +1,27 @@
 import { NextApiRequest,NextApiResponse } from 'next'
 import client from '@/prisma/prisma'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 
+export default async function handler(req:NextApiRequest,res:NextApiResponse){
 
-export default function handler(req:NextApiRequest,res:NextApiResponse){
-    // console.log(prisma)
-    
-    res.json({msg:'msg'})
+    if(req.method === 'POST'){
+        const { email , password } = req.body
+        const User = await client.userShop.findFirst({where:{
+            email:email
+        }})
+        if(User){
+            bcrypt.compare(password, User.password as string, function(err, result) {
+                if(result){
+                    const token = jwt.sign(User,process.env.JWT_SECRET as string)
+                    res.json({user:User,token:token,route:"/"})
+                }else{
+                    res.json({msg:'Password not match'})
+                }
+            });
+        }else{
+            res.json({msg:'User Not Exists'})
+        }
+    }
 }

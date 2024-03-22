@@ -3,7 +3,7 @@ import * as Interfaces from '@/app/controller/interfaces'
 
 interface GET_USER{
     type:APITypes.API_GET_USER,
-    data:any,
+    user:any,
     route:string;
 }
 
@@ -20,7 +20,10 @@ interface CHANGE_CURRENCY{
 
 interface LOGIN{
     type:APITypes.API_LOGIN,
-    data:any
+    user:any;
+    token:any;
+    data:any;
+    route:string;
 }
 
 interface LOGOUT{
@@ -31,7 +34,22 @@ interface LOGOUT{
 
 interface REGISTER {
     type:APITypes.API_REGISTER,
+    user:any;
+    token:string;
+    data:any;
+    route:string;
+}
+interface UPDATE_CART {
+    type:APITypes.API_UPDATE_CART,
+    data:any;
+}
+interface UPDATE_PROFILE {
+    type:APITypes.API_UPDATE_PROFILE,
+    data:any;
+}
+interface PAY {
+    type:APITypes.API_PAY,
     data:any;
 }
 
-export type APIActions = GET_USER | SET_PRODUCTS | CHANGE_CURRENCY | REGISTER | LOGIN | LOGOUT
+export type APIActions = GET_USER | SET_PRODUCTS | CHANGE_CURRENCY | REGISTER | LOGIN | LOGOUT | UPDATE_CART | UPDATE_PROFILE | PAY
