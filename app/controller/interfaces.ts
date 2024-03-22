@@ -1,3 +1,13 @@
+export interface User{
+    id:number;
+    nickname:string;
+    email:string;
+    password:string;
+    city:string;
+    zip:string;
+    phone:string;
+}
+
 export interface Product{
     id:number;
     img:string;

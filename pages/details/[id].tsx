@@ -2,19 +2,19 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 import products from '@/public/assets/products.json'
 import * as Interfaces from '@/app/controller/interfaces'
-import { BlogDetailsComponents } from '@/app/components/blog-details';
-import FullSidebar from '@/app/components/global/sidebar/full-sidebar.component';
 import "../../app/globals.css";
-import Banner from '@/app/components/global/banner.component';
 import { DetailsComponents } from '@/app/components/details';
+import Layout from '../layout';
 
 const Details:React.FC<{ product:Interfaces.Product }> = ({ product }) => {
   return (
-  <div className='details'>
-    <DetailsComponents.CarouselComponents.Carousel product={product} productImgSrc={product.img} />
-    <DetailsComponents.TabsComponents.Tabs />
-    <DetailsComponents.Related />
-  </div>
+  <Layout>
+    <div className='details'>
+      <DetailsComponents.CarouselComponents.Carousel product={product} productImgSrc={product.img} />
+      <DetailsComponents.TabsComponents.Tabs />
+      <DetailsComponents.Related />
+    </div>
+  </Layout>
   );
 };
 

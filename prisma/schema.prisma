@@ -8,24 +8,36 @@ datasource db {
 }
 
 model UserShop {
-  id       Int       @id @default(autoincrement())
-  name     String
-  last_name String
-  nickname String
-  city     String
-  zip      String
-  createdAt DateTime @default(now())
-  lastModified DateTime @updatedAt
-  payments Payments[]
+  id           Int        @id @default(autoincrement())
+  nickname     String?
+  email        String?
+  password     String?
+  first_name   String?
+  last_name    String?
+  city         String?
+  zip          String?
+  phone        String?
+  createdAt    DateTime?  @default(now()) @db.Timestamp(6)
+  lastModified DateTime?  @default(now()) @updatedAt @db.Timestamp(6)
+  Cart         Cart[]
+  Payments     Payments[]
+}
+
+model Cart {
+  id         Int       @id @default(autoincrement())
+  user_id    Int?
+  quantity   Int?
+  price      Int?
+  product_id Int?
+  UserShop   UserShop? @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model Payments {
-  id        Int      @id @default(autoincrement())
-  user_id   Int
-  total     Int
-  payment_id Int      @default(autoincrement())
-  is_payed Boolean
-  UserShop  UserShop @relation(fields: [user_id], references: [id])
-  timestamp    DateTime  @default(now())
+  id         Int       @id @default(autoincrement())
+  user_id    Int?
+  total      Int?
+  payment_id Int       @default(autoincrement())
+  is_payed   Boolean?
+  timestamp  DateTime? @default(now()) @db.Timestamp(6)
+  UserShop   UserShop? @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
-

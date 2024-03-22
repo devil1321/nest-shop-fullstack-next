@@ -2,6 +2,20 @@ import { Dispatch } from "redux"
 import { APITypes } from "../types"
 import axios from "axios"
 import * as Interfaces from '../interfaces'
+import store from "../store"
+
+const getToken = () =>{
+    if(typeof window !== 'undefined'){
+        let access = ''
+        const token = localStorage.getItem('jwt')
+        if(token){
+            access = token
+        }else{
+            access = store.getState().api.token
+        }
+        return access
+    }
+}
 
 export const changeCurrency = (currency:string) => async(dispatch:Dispatch) =>{
     try{
@@ -48,5 +62,88 @@ export const setProducts = () => async(dispatch:Dispatch) =>{
         })
     }catch(err){
         console.log(err)
+    }
+}
+
+export const getUser = () => async (dispatch:Dispatch)=>{
+    const token = getToken()
+    try{
+        const res = await axios.post('/api/get-user',{},{
+            headers:{
+                'Authorization':token
+            }
+        })
+        const data = await res.data
+        dispatch({
+            type:APITypes.API_GET_USER,
+            data:data,
+            route:"/"
+        })
+    }catch(err){
+        dispatch({
+            type:APITypes.API_GET_USER,
+            data:{msg:'You must be logged in',user:null},
+            route:'/credentials'
+        })
+    }
+}
+
+export const register = (formData:any) => async(dispatch:Dispatch) =>{
+    try{
+        const res = await axios.post('/api/register',formData,{
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        const data = await res.data
+        if(typeof window !== 'undefined'){
+            if(data?.token){
+                localStorage.setItem('jwt',data.token)
+            }
+        }
+        dispatch({
+            type:APITypes.API_REGISTER,
+            data:data
+        })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_REGISTER,
+            data:err
+        })
+    }
+
+}
+
+export const login = (formData:any) => async(dispatch:Dispatch) =>{
+    try{
+        const res = await axios.post('/api/login',formData,{
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        const data = await res.data
+        dispatch({
+            type:APITypes.API_LOGIN,
+            data:data,
+            token:data.token
+        })
+    }catch(err){
+        dispatch({
+            type:APITypes.API_LOGIN,
+            data:err
+        })
+    }
+
+}
+
+export const logout = () => async(dispatch:Dispatch) =>{
+    if(typeof window !== 'undefined'){
+        localStorage.removeItem('jwt')
+        dispatch({
+            type:APITypes.API_LOGOUT,
+            token:'',
+            route:'/credentials'
+        })
     }
 }

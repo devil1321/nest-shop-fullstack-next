@@ -2,12 +2,14 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./controller/store";
 import { GlobalComponents } from "./components/global";
 import { useEffect } from "react";
 import * as ApiActions from '@/app/controller/action-creators/api.action-creators'
 import { bindActionCreators } from "redux";
+import { State } from "./controller/reducers/root.reducer";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +25,9 @@ export default function RootLayout({
         <div className="container">
           <Provider store={store}>
             <GlobalComponents.NavComponents.Nav />
-            <WithProducts>
-              {children}
-            </WithProducts>
+              <WithProducts>
+                {children}
+              </WithProducts>
             <GlobalComponents.FooterComponents.Footer />
           </Provider>
         </div>
@@ -38,10 +40,23 @@ const WithProducts = ({children}:{children:React.ReactNode}) =>{
 
   const dispatch = useDispatch()
   const APIActions = bindActionCreators(ApiActions,dispatch)
+  const { data,route,token } = useSelector((state:State) => state.api)
+  const router = useRouter()
 
+  const handleInit = () =>{
+    router.push(route)
+  }
+  
   useEffect(()=>{
     APIActions.setProducts()
+    if(!data){
+      APIActions.getUser()
+    }
   },[])
+
+  useEffect(()=>{
+    handleInit()
+  },[token,data])
 
   return(
     <div className="with-redux-container">{children}</div>
