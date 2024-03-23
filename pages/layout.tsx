@@ -2,32 +2,44 @@
 import React, { useEffect } from 'react';
 import Nav from '@/app/components/global/nav/nav.component';
 import Footer from '@/app/components/global/footer/footer.component';
-import { useRouter } from 'next/router';
 import { useDispatch,useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ApiActions from '@/app/controller/action-creators/api.action-creators'
 import { State } from '@/app/controller/reducers/root.reducer';
+import { usePathname,useRouter } from 'next/navigation';
 
 function Layout({ children }:{children:React.ReactNode}) {
 
   const dispatch = useDispatch()
   const APIActions = bindActionCreators(ApiActions,dispatch)
-  const { data,user,route,token } = useSelector((state:State) => state.api)
+  const { user } = useSelector((state:State) => state.api)
   const router = useRouter()
-
+  const pathname = usePathname() 
+  
   const handleInit = () =>{
-    router.push(route)
-  }
-  useEffect(()=>{
-    APIActions.setProducts()
-    if(!token){
-      APIActions.getUser()
+    if(typeof window !== 'undefined'){
+      const token = localStorage.getItem('jwt')
+      if(pathname !== "/" && !token){
+        router.push("/")
+      }else if(pathname === '/' && token){
+        router.push('/home')
+      }
     }
-  },[user,token,route])
+  }
+  
+  useEffect(()=>{
+    if(typeof window !== 'undefined'){
+      const token = localStorage.getItem('jwt')
+      if(token){
+        APIActions.getUser()
+        APIActions.setProducts()
+      }
+    }
+  },[])
 
   useEffect(()=>{
     handleInit()
-  },[token,user,route])
+  },[user])
 
   return (
     <div className="container">

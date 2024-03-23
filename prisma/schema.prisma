@@ -1,5 +1,3 @@
-// schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,8 +19,8 @@ model UserShop {
   phone        String    @unique
   createdAt    DateTime  @default(now())
   lastModified DateTime  @default(now()) @updatedAt
-  Cart         Cart[]    // One-to-many relationship to Cart
-  Payments     Payments[] // One-to-many relationship to Payments
+  carts        Cart[]    // One-to-many relationship to Cart
+  payments     Payment[] // One-to-many relationship to Payment
 
   // Unique constraints
   @@unique([nickname, email, phone])
@@ -30,20 +28,24 @@ model UserShop {
 
 model Cart {
   id         Int       @id @default(autoincrement())
-  cart_id    String
-  user_id    Int       @unique
+  cart_id    String    
+  user_id    Int
   quantity   Int
   price      Int
   product_id Int
-  UserShop   UserShop  @relation(fields: [user_id], references: [id])
+  createdAt  DateTime  @default(now())
+  user       UserShop? @relation(fields: [user_id], references: [id])
 }
 
-model Payments {
+model Payment {
   id             Int       @id @default(autoincrement())
-  user_id        Int       @unique
+  user_id        Int
   total          Int
   cart_items_id  String
   is_payed       Boolean
   timestamp      DateTime  @default(now())
-  UserShop       UserShop? @relation(fields: [user_id], references: [id])
+  user           UserShop? @relation(fields: [user_id], references: [id])
+
+  // Unique constraints
+  // @@unique([payment_id])  // Note: payment_id is not defined in the model
 }

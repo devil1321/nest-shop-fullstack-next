@@ -7,7 +7,8 @@ interface InitState {
     user:any;
     products:Interfaces.Product[]
     token:any;
-    route:string;
+    cart:any[];
+    payments:any[];
 }
 
 const initState:InitState = {
@@ -15,7 +16,8 @@ const initState:InitState = {
     products:[],
     token:null,
     user:null,
-    route:'/credentials'
+    cart:[],
+    payments:[],
 }
 
 export default (state:InitState = initState,action:APIActions) =>{
@@ -37,7 +39,6 @@ export default (state:InitState = initState,action:APIActions) =>{
                 user:action.user,
                 token:action.token,
                 data:action.data,
-                route:action.route
             }
         case APITypes.API_LOGIN:
             return{
@@ -45,19 +46,58 @@ export default (state:InitState = initState,action:APIActions) =>{
                 user:action.user,
                 token:action.token,
                 data:action.data,
-                route:action.route
+            }
+        case APITypes.API_TEST:
+            return{
+                ...state,
+                user:action.user,
+                token:action.token,
+                data:action.data,
+            }
+        case APITypes.API_LOGIN:
+            return{
+                ...state,
+                user:action.user,
+                token:action.token,
+                data:action.data,
             }
         case APITypes.API_LOGOUT:
             return{
                 ...state,
                 token:action.token,
-                route:action.route
             }
         case APITypes.API_GET_USER:
             return{
                 ...state,
                 user:action.user,
-                route:action.route
+            }
+        case APITypes.API_GET_CART:
+            return{
+                ...state,
+                cart:action.cart,
+                data:(function(){
+                    if(action.data){
+                        return action.data
+                    }
+                })()
+            }
+        case APITypes.API_CLEAR_HISTORY:
+            return{
+                ...state,
+                cart:action.cart,
+                data:action.data
+            }
+        case APITypes.API_GET_PAYMENTS:
+            return{
+                ...state,
+                payments:action.payments,
+                data:(function(){
+                    if(action.data){
+                        return action.data
+                    }else{
+                        return
+                    }
+                })()
             }
         case APITypes.API_UPDATE_CART:
             return{

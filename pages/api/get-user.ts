@@ -1,8 +1,5 @@
 import { NextApiRequest,NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
-import client from '../../prisma/prisma'
-import { useStyleRegistry } from 'styled-jsx'
-
 
 export default function handler(req:NextApiRequest,res:NextApiResponse){
     if(req.method === 'POST'){

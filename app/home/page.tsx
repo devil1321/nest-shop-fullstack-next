@@ -1,5 +1,5 @@
-import { GlobalComponents } from "./components/global";
-import { HomeComponents } from "./components/home";
+import { GlobalComponents } from "../components/global";
+import { HomeComponents } from "../components/home";
 
 export default function Home(props:any) {
   return (

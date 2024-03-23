@@ -101,7 +101,7 @@ const Footer = () => {
             <Image className='mr-2' src="/assets/global/deals-icon.png" alt='chevron' width={20} height={20}/>
             <span>Deals</span>
         </Link>
-        <Link href="/" className='nav-footer-menu-item flex items-center'>
+        <Link href="/home" className='nav-footer-menu-item flex items-center'>
             <span>Home</span>
         </Link>
         <Link href="/about" className='nav-footer-menu-item flex items-center'>

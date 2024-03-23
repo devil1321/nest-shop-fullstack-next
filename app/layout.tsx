@@ -9,8 +9,7 @@ import { useEffect } from "react";
 import * as ApiActions from '@/app/controller/action-creators/api.action-creators'
 import { bindActionCreators } from "redux";
 import { State } from "./controller/reducers/root.reducer";
-import { useRouter } from "next/navigation";
-
+import { useRouter,usePathname } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -40,23 +39,34 @@ const WithProducts = ({children}:{children:React.ReactNode}) =>{
 
   const dispatch = useDispatch()
   const APIActions = bindActionCreators(ApiActions,dispatch)
-  const { user,route,token,data } = useSelector((state:State) => state.api)
+  const { user } = useSelector((state:State) => state.api)
   const router = useRouter()
+  const pathname = usePathname()
 
   const handleInit = () =>{
-    router.push(route)
+    if(typeof window !== 'undefined'){
+      const token = localStorage.getItem('jwt')
+      if(pathname !== "/" && !token){
+        router.push("/")
+      }else if(pathname === '/' && token){
+        router.push('/home')
+      }
+    }
   }
   
   useEffect(()=>{
-    APIActions.setProducts()
-    if(!token){
-      APIActions.getUser()
+    if(typeof window !== 'undefined'){
+      const token = localStorage.getItem('jwt')
+      if(token){
+        APIActions.setProducts()
+        APIActions.getUser()
+      }
     }
-  },[user,token,route])
+  },[])
 
   useEffect(()=>{
     handleInit()
-  },[token,user,route])
+  },[user])
 
   return(
     <div className="with-redux-container">{children}</div>

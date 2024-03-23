@@ -10,7 +10,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
             email:'test@gmail.com'
         }})
         if(User){
-            bcrypt.compare('test1321', User.password as string, function(err, result) {
+            bcrypt.compare('test', User.password as string, function(err, result) {
                 if(result){
                     const token = jwt.sign(User,process.env.JWT_SECRET as string)
                     res.json({user:User,token:token})

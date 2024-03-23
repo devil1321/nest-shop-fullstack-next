@@ -1,22 +1,37 @@
 import { UITypes } from "../types"
 import { UIActions } from "../actions/ui.actions"
+import { isCartFiltered } from "../action-creators/ui.action-creators";
 
 interface InitState {
     language:string;
     currency:string;
     aboutCarouselMainImageSrc:string;
     detailsCarouselMainImageSrc:string;
+    refresh:boolean;
+    isCartFiltered:boolean;
 }
 
 const initState:InitState = {
     language:'English',
     currency:'USD',
     aboutCarouselMainImageSrc:'/assets/about/carousel-1.png',
-    detailsCarouselMainImageSrc:'/assets/global/product-1.png'
+    detailsCarouselMainImageSrc:'/assets/global/product-1.png',
+    refresh:false,
+    isCartFiltered:false
 }
 
 export default (state:InitState = initState,action:UIActions) =>{
     switch(action.type){
+        case UITypes.UI_REFRESH:
+            return {
+                ...state,
+                refresh:action.refresh
+            }
+        case UITypes.UI_IS_CART_FILTERED:
+            return {
+                ...state,
+                isCartFiltered:action.isCartFiltered
+            }
         case UITypes.UI_CHANGE_LANGUAGE:
             return {
                 ...state,

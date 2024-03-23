@@ -15,7 +15,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
             bcrypt.compare(password, User.password as string, function(err, result) {
                 if(result){
                     const token = jwt.sign(User,process.env.JWT_SECRET as string)
-                    res.json({user:User,token:token,route:"/"})
+                    res.json({user:User,token:token})
                 }else{
                     res.json({msg:'Password not match'})
                 }

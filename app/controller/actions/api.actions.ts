@@ -1,10 +1,28 @@
 import { APITypes } from "../types"
 import * as Interfaces from '@/app/controller/interfaces'
 
+interface TEST{
+    type:APITypes.API_TEST,
+    user:any;
+    token:any;
+    data:any;
+}
+
 interface GET_USER{
     type:APITypes.API_GET_USER,
     user:any,
-    route:string;
+}
+
+interface GET_CART{
+    type:APITypes.API_GET_CART,
+    cart:any[]
+    data:any;
+}
+
+interface GET_PAYMENTS{
+    type:APITypes.API_GET_PAYMENTS,
+    payments:any[]
+    data?:any;
 }
 
 interface SET_PRODUCTS{
@@ -23,13 +41,11 @@ interface LOGIN{
     user:any;
     token:any;
     data:any;
-    route:string;
 }
 
 interface LOGOUT{
     type:APITypes.API_LOGOUT
     token:any;
-    route:string;
 }
 
 interface REGISTER {
@@ -37,11 +53,15 @@ interface REGISTER {
     user:any;
     token:string;
     data:any;
-    route:string;
 }
 interface UPDATE_CART {
     type:APITypes.API_UPDATE_CART,
     data:any;
+}
+interface CLEAR_HISTORY {
+    type:APITypes.API_CLEAR_HISTORY,
+    data:any;
+    cart:any[];
 }
 interface UPDATE_PROFILE {
     type:APITypes.API_UPDATE_PROFILE,
@@ -52,4 +72,4 @@ interface PAY {
     data:any;
 }
 
-export type APIActions = GET_USER | SET_PRODUCTS | CHANGE_CURRENCY | REGISTER | LOGIN | LOGOUT | UPDATE_CART | UPDATE_PROFILE | PAY
+export type APIActions = GET_USER | GET_CART | CLEAR_HISTORY | GET_PAYMENTS | TEST | SET_PRODUCTS | CHANGE_CURRENCY | REGISTER | LOGIN | LOGOUT | UPDATE_CART | UPDATE_PROFILE | PAY

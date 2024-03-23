@@ -9,6 +9,7 @@ const useCartItem = (id:number) => {
   const [item,setItem] = useState<Interfaces.Product>()
 
   const { products } = useSelector((state:State) => state.api)
+  const { cart } = useSelector((state:State) => state.api)
 
   const handleItem = () =>{
     const item = products.find((p:Interfaces.Product) => p.id === id) as Interfaces.Product
@@ -17,7 +18,7 @@ const useCartItem = (id:number) => {
 
   useEffect(()=>{
     handleItem()
-  },[id])
+  },[id,cart.length,products])
 
   return [item,setItem]
 }

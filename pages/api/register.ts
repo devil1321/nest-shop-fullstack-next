@@ -35,7 +35,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                                         exp: Math.floor(Date.now() / 1000) + (60 * 60),
                                         data: User
                                     }, process.env.JWT_SECRET as string);   
-                                    res.json({user:User,token:token,route:"/"})
+                                    res.json({user:User,token:token})
                                 }catch(err){
                                     console.log(err)
                                     console.log('User Not Created')

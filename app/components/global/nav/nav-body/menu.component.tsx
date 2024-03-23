@@ -32,7 +32,7 @@ const Menu = () => {
   }
 
   return (
-    <div className='nav-body-menu ml-auto md:w-[50%] mt-4 xl:mt-0 mb-0 xl:w-1/5 flex flex-wrap md:flex-nowrap justify-between xl:justify-end gap-10 items-center'>
+    <div className='nav-body-menu mx-auto md:w-[50%] mt-4 xl:mt-0 mb-0 xl:w-1/5 flex flex-wrap md:flex-nowrap justify-between xl:justify-end gap-10 items-center'>
       <div className="nav-body-menu-item w-2/5 flex justify-start items-center">
         <Image src="/assets/global/compare-icon.png" alt='compare-icon' width={15} height={15} />
         <Link className='nav-body-menu-item w-2/5' href="/compare">

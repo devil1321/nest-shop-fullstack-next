@@ -38,20 +38,36 @@ export const changeCurrency = (currency:string) => async(dispatch:Dispatch) =>{
         console.log(err)
     }
 }
-export const setProducts = () => async(dispatch:Dispatch) =>{
+export const test = () => async(dispatch:Dispatch) =>{
     try{
-        const res = await axios.get('/assets/products.json')
+        const res = await axios.post('/api/test-app',{},{
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
         const data = await res.data
+        if(typeof window !== 'undefined'){
+            if(data){
+                localStorage.setItem('jwt',data.token)
+            }
+        }
         dispatch({
-            type:APITypes.API_SET_PRODUCTS,
-            products:data
+            type:APITypes.API_TEST,
+            data:data,
+            user:data.user,
+            token:data.token,
+            route:data.route
         })
     }catch(err){
-        console.log(err)
+        dispatch({
+            type:APITypes.API_TEST,
+            data:err
+        })
     }
+
 }
 export const getUser = () => async (dispatch:Dispatch)=>{
-    const token = getToken()
+    const token = getToken() as string
     const { user } = store.getState().api
     try{
         const res = await axios.post('/api/get-user',user,{
@@ -63,13 +79,87 @@ export const getUser = () => async (dispatch:Dispatch)=>{
         dispatch({
             type:APITypes.API_GET_USER,
             user:data?.user?.data ? data.user.data : data.user,
-            route:!token ? "/credentials" : "/"
+            token:token,
+            route:token ? undefined : "/"
         })
     }catch(err){
         dispatch({
             type:APITypes.API_GET_USER,
             data:{msg:'You must be logged in',user:null},
-            route:'/credentials'
+            route:'/'
+        })
+    }
+}
+export const getCart = (user_id:number) => async(dispatch:Dispatch)=>{
+    try{
+       const res =  await axios.post('/api/get-cart',{ user_id })
+       const data = await res.data
+       if(data?.cart?.length > 0){
+           store.getState().shop.cart = data.cart
+       }
+       dispatch({
+        type:APITypes.API_GET_CART,
+        cart:data?.cart
+       })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_GET_CART,
+            data:err,
+            cart:[]
+        })
+    }
+}
+export const clearHistory = (user_id:number) => async(dispatch:Dispatch)=>{
+    try{
+       const res =  await axios.post('/api/clear-history',{ user_id })
+       const data = await res.data
+       if(data?.cart?.length > 0){
+           store.getState().shop.cart = data.cart
+       }
+       dispatch({
+        type:APITypes.API_CLEAR_HISTORY,
+        cart:data?.cart,
+        data:data?.data
+       })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_CLEAR_HISTORY,
+            data:err,
+            cart:[]
+        })
+    }
+}
+export const setProducts = () => async(dispatch:Dispatch)=>{
+    try{
+        const res = await axios.get('/assets/products.json')
+        const data = await res.data
+        dispatch({
+            type:APITypes.API_SET_PRODUCTS,
+            products:data
+        })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_SET_PRODUCTS,
+            products:[]
+        })
+    }
+}
+export const getPayments = (user_id:number) => async(dispatch:Dispatch)=>{
+    try{
+       const res =  await axios.post('/api/get-payments',user_id)
+       const data = await res.data
+       dispatch({
+        type:APITypes.API_GET_PAYMENTS,
+        payments:data?.payments
+       })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_GET_PAYMENTS,
+            data:err
         })
     }
 }
@@ -88,10 +178,10 @@ export const register = (formData:any) => async(dispatch:Dispatch) =>{
         }
         dispatch({
             type:APITypes.API_REGISTER,
-            user:data?.user,
-            token:data?.token,
+            user:data.user,
+            token:data.token,
             data:data,
-            route:data?.route
+            route:data.route
         })
     }catch(err){
         console.log(err)

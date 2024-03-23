@@ -4,7 +4,6 @@ import blogs from '@/public/assets/blogs.json'
 import * as Interfaces from '@/app/controller/interfaces'
 import { BlogDetailsComponents } from '@/app/components/blog-details';
 import FullSidebar from '@/app/components/global/sidebar/full-sidebar.component';
-import "../../app/globals.css";
 import Banner from '@/app/components/global/banner.component';
 import Layout from '../layout';
 

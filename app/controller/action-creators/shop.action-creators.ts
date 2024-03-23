@@ -3,13 +3,13 @@ import { ShopTypes } from "../types"
 import store from "../store"
 import * as Interfaces from '@/app/controller/interfaces'
 
-export const addToCart = (id:number,quantity:number) => (dispatch:Dispatch) =>{
+export const addToCart = (id:number,quantity:number,price:number) => (dispatch:Dispatch) =>{
     const { cart } = store.getState().shop
     const { products } = store.getState().api
     let tmpCart = cart
     const product = products.find((p:Interfaces.Product) => p.id === id) as Interfaces.Product
     product.inCart = true
-    tmpCart.push({ id, quantity })
+    tmpCart.push({ id, quantity,price })
     dispatch({
         type:ShopTypes.SHOP_ADD_TO_CART,
         cart:tmpCart
@@ -19,7 +19,6 @@ export const increment = (id:number,count:number) => (dispatch:Dispatch) =>{
     const { cart } = store.getState().shop
     const cartItem = cart.find((i:Interfaces.CartItem) =>  i.id === id) as Interfaces.CartItem
     cartItem.quantity += count
-    console.log(cartItem)
     dispatch({
         type:ShopTypes.SHOP_INCREMENT,
         cart:cart

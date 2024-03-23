@@ -3,7 +3,7 @@ import { ShopActions } from "../actions/shop.actions"
 import * as Interfaces from "../interfaces"
 
 interface InitState {
-    cart:Interfaces.CartItem[];
+    cart:any[];
     summary:number;
 }
 

@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 import products from '@/public/assets/products.json'
 import * as Interfaces from '@/app/controller/interfaces'
-import "../../app/globals.css";
 import { DetailsComponents } from '@/app/components/details';
 import Layout from '../layout';
 

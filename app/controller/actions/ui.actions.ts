@@ -1,4 +1,13 @@
 import { UITypes } from "../types"
+
+interface REFRESH{
+    type:UITypes.UI_REFRESH,
+    refresh:boolean;
+}
+interface IS_CART_FILTERED{
+    type:UITypes.UI_IS_CART_FILTERED,
+    isCartFiltered:boolean;
+}
 interface CHANGE_LANGUAGE{
     type:UITypes.UI_CHANGE_LANGUAGE,
     language:string;
@@ -17,4 +26,4 @@ interface SET_DETAILS_CAROUSEL_MAIN_IMAGE{
 }
 
 
-export type UIActions = CHANGE_LANGUAGE | CHANGE_CURRENCY  | SET_ABOUT_CAROUSEL_MAIN_IMAGE | SET_DETAILS_CAROUSEL_MAIN_IMAGE
+export type UIActions = REFRESH | IS_CART_FILTERED | CHANGE_LANGUAGE | CHANGE_CURRENCY  | SET_ABOUT_CAROUSEL_MAIN_IMAGE | SET_DETAILS_CAROUSEL_MAIN_IMAGE
