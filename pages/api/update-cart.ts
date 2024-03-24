@@ -22,6 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 data: cartItems,
                 skipDuplicates: true 
             });
+            const disconnected = await client.$disconnect()
             res.json({ msg: 'Cart Updated', cart:createdCartItems });
         } catch (err) {
             console.log(err);

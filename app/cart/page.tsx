@@ -47,38 +47,7 @@ const Cart = () => {
         }})
       }
     }
-  }
-
-  function filterClosestToDate(cart: any) {
-    const now = new Date();
-    let closestDateItems: any[] = [];
-    let minDifference = Infinity;
-  
-    // Iterate through each item in the cart array
-    for (const item of cart) {
-      const itemDate = new Date(item.createdAt);
-      const difference = Math.abs(itemDate.getTime() - now.getTime()); // Calculate the absolute difference in milliseconds
-  
-      // If the current item's date is closer to now, update the closest date and reset the array
-      if (difference < minDifference) {
-        closestDateItems = [item];
-        minDifference = difference;
-      } 
-      // If the current item's date is the same as the closest date, add it to the array
-      else if (difference === minDifference) {
-        closestDateItems.push(item);
-      }
-    }
-  
-    // Set the active cart if there are closest date items
-    if (closestDateItems.length > 0) {
-      setActiveCart(closestDateItems[0].createdAt);
-    }
-  
-    // Return the array containing items with the closest date
-    return closestDateItems;
-  }
-  
+  }  
 
   function filterDuplicates(cart:any) {
     const uniqueIds = [];
@@ -103,9 +72,16 @@ const Cart = () => {
     if(items[0]){
       setActiveCart(items[0]?.createdAt)
     }
-    setTmpCart(items)
+    const tempCart = items.map((i:any) => ({
+      id:i.product_id,
+      quantity:i.quantity,
+      price:i.price
+    }))
+    shopActions.setCart(tempCart)
+    setTmpCart(tempCart)
     setIsRequest(false)
   }
+
   
   useEffect(()=>{
     if(typeof window !== undefined){  
@@ -120,23 +96,12 @@ const Cart = () => {
 
   useEffect(()=>{
     setTmpCart(cart)
-  },[cart])
+  },[cart,refresh])
 
   useEffect(()=>{
-    if(isCartFiltered){
-      setTmpCart(cart)
-    }
-  },[refresh])
-
-  useEffect(()=>{
-    if(!isCartFiltered && previosCart.length){
       if(previosCart.length > 0){
         setIsMenu(true)
       }
-      setTmpCart(previosCart)
-      setTmpCart(filterClosestToDate(previosCart))
-      UIActions.isCartFiltered(true)
-    }
   },[previosCart.length])
 
 
@@ -149,7 +114,7 @@ const Cart = () => {
             <div className="cart-items-nav py-10 flex justify-between items-center">
               <span className='text-lg font-bold'>Filter Carts By Date</span>
               <div className="cart-items-nav-menu-active-cart relative top-0 left-0">
-                <span onClick={()=>handleMenu()}  className='cursor-pointer px-5 font-bold text-white bg-green-300 p-2 rounded-md'>{activeCart === '' ? "Current" : activeCart}</span>
+                <span onClick={()=>handleMenu()}  className='cursor-pointer px-5 font-bold text-white bg-green-300 p-2 rounded-md'>{!Boolean(tmpCart.length === 0) ? "Current" : 'Previous Carts'}</span>
                 {isMenu &&
                   <div ref={filterMenuRef} className="cart-items-nav-menu absolute z-10 top-10 w-max left-1/2 -translate-x-1/2 bg-white rounded-md p-5 shadow-lg shadow-gray-300">
                     {filterDuplicates(previosCart).reverse().map((c:any) => <p key={`cart-filter-key-${c.id}`} className='p-2 w-[100%] text-center rounded-md hover:bg-green-300 cursor-pointer' onClick={()=>{
@@ -157,13 +122,14 @@ const Cart = () => {
                       handleMenu()
                     }}>{c.createdAt}</p>)}
                     <button onClick={()=>{
-                        APIActions.clearHistory(user?.id)
+                        APIActions.clearHistory(user.id)
                         setIsMenu(false)
+                        setTmpCart([])
                       }} className="block w-[100%] rounded-md my-2 p-2 bg-red-300 text-red-500 hover:text-red-700 hover:bg-red-400">Clear History</button>
                   </div>}
                 </div>
             </div>
-            {cart.length > 0 
+            {cart.length > 0 && tmpCart.length > 0
           ? <div className="cart-items">
             {tmpCart.map((p:Interfaces.CartItem) => <CartComponents.CartItem key={`cart-item-key-${p.id}`} cartItem={p} /> )} 
             {tmpCart.length > 0 && <button className='mt-12 w-[100%] bg-red-200 text-red-500 hover:bg-red-400 hover:text-red-700 py-2 rounded-md' onClick={()=>{

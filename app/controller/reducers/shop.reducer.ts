@@ -14,6 +14,11 @@ const initState:InitState = {
 
 export default (state:InitState = initState,action:ShopActions) =>{
     switch(action.type){
+        case ShopTypes.SHOP_SET_CART:
+            return{
+                ...state,
+                cart:action.cart
+            }
         case ShopTypes.SHOP_ADD_TO_CART:
             return{
                 ...state,

@@ -8,6 +8,7 @@ export enum UITypes {
 }
 
 export enum ShopTypes {
+    SHOP_SET_CART = 'SHOP_SET_CART',
     SHOP_ADD_TO_CART = 'SHOP_ADD_TO_CART',
     SHOP_REMOVE_FROM_CART = 'SHOP_REMOVE_FROM_CART',
     SHOP_CLEAR_CART = 'SHOP_CLEAR_CART',

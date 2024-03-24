@@ -7,6 +7,7 @@ import * as Interfaces from '@/app/controller/interfaces'
 const useQuantity = (id:number) => {
 
   const { cart } = useSelector((state:State) => state.shop)
+  const { cart:previousCart } = useSelector((state:State) => state.api)
 
   const [quantity,setQuantity] = useState<number>(0)
   const [item,setItem] = useState<Interfaces.CartItem>()
@@ -16,10 +17,9 @@ const useQuantity = (id:number) => {
     setItem(tmpItem)
     setQuantity(tmpItem?.quantity)
   }
-
   useEffect(()=>{
     handleQuantity()
-  },[id,cart.length,item?.quantity])
+  },[id,cart.length,previousCart.length,item?.quantity])
 
   return [quantity,setQuantity]
 }

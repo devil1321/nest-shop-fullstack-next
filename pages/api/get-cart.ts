@@ -12,6 +12,8 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                     }
                 })
                 if(Cart){
+                    const disconnected = await client.$disconnect()
+                    console.log(disconnected)
                     res.json({cart:Cart})
                 }            
             }catch(err){

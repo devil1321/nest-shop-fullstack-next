@@ -5,6 +5,11 @@ interface ADD_TO_CART {
     type:ShopTypes.SHOP_ADD_TO_CART,
     cart:Interfaces.CartItem[]    
 }
+
+interface SET_CART {
+    type:ShopTypes.SHOP_SET_CART,
+    cart:Interfaces.CartItem[]    
+}
 interface INCREMENT {
     type:ShopTypes.SHOP_INCREMENT,  
     cart:Interfaces.CartItem[]  
@@ -26,5 +31,5 @@ interface SUMMARY {
     summary:number
 }
 
-export type ShopActions = ADD_TO_CART | INCREMENT | DECREMENT | REMOVE_FROM_CART | CLEAR_CART | SUMMARY
+export type ShopActions = SET_CART | ADD_TO_CART | INCREMENT | DECREMENT | REMOVE_FROM_CART | CLEAR_CART | SUMMARY
 

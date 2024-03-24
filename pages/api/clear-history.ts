@@ -10,6 +10,8 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                     user_id:user_id
                 }
             })
+            const disconnected = await client.$disconnect()
+            console.log(disconnected)
             res.json({cart:[],data:Cart})
         }catch(err){
             console.log(err)

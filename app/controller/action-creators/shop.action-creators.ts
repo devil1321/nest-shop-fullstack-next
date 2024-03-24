@@ -15,6 +15,12 @@ export const addToCart = (id:number,quantity:number,price:number) => (dispatch:D
         cart:tmpCart
     })
 }
+export const setCart = (cart:Interfaces.CartItem[]) => (dispatch:Dispatch) =>{
+    dispatch({
+        type:ShopTypes.SHOP_SET_CART,
+        cart:cart
+    })
+}
 export const increment = (id:number,count:number) => (dispatch:Dispatch) =>{
     const { cart } = store.getState().shop
     const cartItem = cart.find((i:Interfaces.CartItem) =>  i.id === id) as Interfaces.CartItem
@@ -48,6 +54,7 @@ export const removeFromCart = (id:number) => (dispatch:Dispatch) =>{
 }
 export const clearCart = () => (dispatch:Dispatch) =>{
     store.getState().api.products.forEach((p:Interfaces.Product) => p.inCart = false)
+    store.getState().api.cart = []
     dispatch({
         type:ShopTypes.SHOP_CLEAR_CART,
         cart:[]
@@ -59,7 +66,9 @@ export const summary = () => (dispatch:Dispatch) =>{
     let summary = 0
     cart.map((c:Interfaces.CartItem)=>{
         const current = products.find((p:Interfaces.Product) => p.id == c.id) as Interfaces.Product
-        summary += (c.quantity * current.price)
+        if(current){
+            summary += (c.quantity * current.price)
+        }
     })
     dispatch({
         type:ShopTypes.SHOP_SUMMARY,

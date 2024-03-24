@@ -14,7 +14,8 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                 data:user
             })
             if(User){
-                res.json({ msg:"Profile updated" })
+                const disconnected = await client.$disconnect()
+                res.json({ user:User,msg:"Profile updated" })
             }
         }catch(err){
             console.log(err)

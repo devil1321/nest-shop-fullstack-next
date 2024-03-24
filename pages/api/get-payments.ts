@@ -9,6 +9,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                 user_id:user_id
             }
         })
+        const disconnected = await client.$disconnect()
         res.json({payments:Payments})
     }
 }

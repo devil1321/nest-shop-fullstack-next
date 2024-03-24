@@ -10,9 +10,10 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
             email:'test@gmail.com'
         }})
         if(User){
-            bcrypt.compare('test', User.password as string, function(err, result) {
+            bcrypt.compare('test', User.password as string, async function(err, result) {
                 if(result){
                     const token = jwt.sign(User,process.env.JWT_SECRET as string)
+                    const disconnected = await client.$disconnect()
                     res.json({user:User,token:token})
                 }else{
                     res.json({msg:'Password not match'})

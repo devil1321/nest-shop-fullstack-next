@@ -35,6 +35,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                                         exp: Math.floor(Date.now() / 1000) + (60 * 60),
                                         data: User
                                     }, process.env.JWT_SECRET as string);   
+                                    const disconnected = await client.$disconnect()
                                     res.json({user:User,token:token})
                                 }catch(err){
                                     console.log(err)

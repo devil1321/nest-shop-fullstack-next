@@ -83,6 +83,9 @@ export const getUser = () => async (dispatch:Dispatch)=>{
             route:token ? undefined : "/"
         })
     }catch(err){
+        if(typeof window !== 'undefined'){
+            localStorage.removeItem('jwt')
+        }
         dispatch({
             type:APITypes.API_GET_USER,
             data:{msg:'You must be logged in',user:null},
@@ -94,9 +97,6 @@ export const getCart = (user_id:number) => async(dispatch:Dispatch)=>{
     try{
        const res =  await axios.post('/api/get-cart',{ user_id })
        const data = await res.data
-       if(data?.cart?.length > 0){
-           store.getState().shop.cart = data.cart
-       }
        dispatch({
         type:APITypes.API_GET_CART,
         cart:data?.cart
@@ -114,12 +114,13 @@ export const clearHistory = (user_id:number) => async(dispatch:Dispatch)=>{
     try{
        const res =  await axios.post('/api/clear-history',{ user_id })
        const data = await res.data
+       store.getState().api.cart = []
        if(data?.cart?.length > 0){
-           store.getState().shop.cart = data.cart
+           store.getState().shop.cart = []
        }
        dispatch({
         type:APITypes.API_CLEAR_HISTORY,
-        cart:data?.cart,
+        cart:[],
         data:data?.data
        })
     }catch(err){
