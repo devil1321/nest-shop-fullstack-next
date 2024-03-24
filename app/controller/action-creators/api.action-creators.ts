@@ -56,7 +56,6 @@ export const test = () => async(dispatch:Dispatch) =>{
             data:data,
             user:data.user,
             token:data.token,
-            route:data.route
         })
     }catch(err){
         dispatch({
@@ -79,8 +78,7 @@ export const getUser = () => async (dispatch:Dispatch)=>{
         dispatch({
             type:APITypes.API_GET_USER,
             user:data?.user?.data ? data.user.data : data.user,
-            token:token,
-            route:token ? undefined : "/"
+            image:data?.image
         })
     }catch(err){
         if(typeof window !== 'undefined'){
@@ -89,7 +87,6 @@ export const getUser = () => async (dispatch:Dispatch)=>{
         dispatch({
             type:APITypes.API_GET_USER,
             data:{msg:'You must be logged in',user:null},
-            route:'/'
         })
     }
 }
@@ -182,7 +179,6 @@ export const register = (formData:any) => async(dispatch:Dispatch) =>{
             user:data.user,
             token:data.token,
             data:data,
-            route:data.route
         })
     }catch(err){
         console.log(err)
@@ -211,7 +207,6 @@ export const login = (formData:any) => async(dispatch:Dispatch) =>{
             data:data,
             user:data.user,
             token:data.token,
-            route:data.route
         })
     }catch(err){
         dispatch({
@@ -227,7 +222,6 @@ export const logout = () => async(dispatch:Dispatch) =>{
         dispatch({
             type:APITypes.API_LOGOUT,
             token:null,
-            route:'/credentials'
         })
     }
 }

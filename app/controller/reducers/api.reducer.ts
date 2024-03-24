@@ -9,6 +9,7 @@ interface InitState {
     token:any;
     cart:any[];
     payments:any[];
+    image:string;
 }
 
 const initState:InitState = {
@@ -18,6 +19,7 @@ const initState:InitState = {
     user:null,
     cart:[],
     payments:[],
+    image:''
 }
 
 export default (state:InitState = initState,action:APIActions) =>{
@@ -70,6 +72,7 @@ export default (state:InitState = initState,action:APIActions) =>{
             return{
                 ...state,
                 user:action.user,
+                image:action.image
             }
         case APITypes.API_GET_CART:
             return{

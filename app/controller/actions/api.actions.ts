@@ -11,6 +11,7 @@ interface TEST{
 interface GET_USER{
     type:APITypes.API_GET_USER,
     user:any,
+    image:string;
 }
 
 interface GET_CART{
