@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { State } from '@/app/controller/reducers/root.reducer'
 import * as Interfaces from '@/app/controller/interfaces'
@@ -9,6 +9,13 @@ import Item from './item.component'
 const ProductsInner = () => {
 
   const { products } = useSelector((state:State)=>state.api)
+  const [tempProducts,setTempProducts] = useState<any[]>([])
+
+  useEffect(()=>{
+    if(products.length > 0 && tempProducts.length === 0){
+      setTempProducts(products)
+    }
+  },[products.length])
 
   return (
     <div className='home-products-inner'>

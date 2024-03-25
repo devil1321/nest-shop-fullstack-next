@@ -122,6 +122,11 @@ export default (state:InitState = initState,action:APIActions) =>{
                 ...state,
                 data:action.data
             }
+        case APITypes.API_FILTER_PRODUCTS:
+                return{
+                    ...state,
+                    products:action.products    
+                }
         default:
             return {
                 ...state

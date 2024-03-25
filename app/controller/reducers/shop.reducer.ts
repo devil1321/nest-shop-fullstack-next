@@ -49,6 +49,7 @@ export default (state:InitState = initState,action:ShopActions) =>{
                 ...state,
                 summary:action.summary
             }
+       
         default:
             return {
                 ...state

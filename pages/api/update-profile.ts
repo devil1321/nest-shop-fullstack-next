@@ -38,17 +38,21 @@
                         
                             // const filePath = req.body.image
                             const imageData = req.body.image
-                            const savedPath = path.join(process.cwd(), 'profiles',`${user.id}.png`); 
-                            const imageBuffer = Buffer.from(imageData, 'base64');
-                            fs.writeFile(savedPath, imageBuffer, (err) => {
-                                if (err) {
-                                    console.error('Error saving image:', err);
-                                    res.status(500).json({ msg: 'Error saving image' });
-                                } else {
-                                    const base64 = imageBuffer.toString('base64');
-                                    res.json({ user: User, msg: 'Profile updated', image: `data:image/png;base64,${base64}` });
-                                }
-                            });
+                            if(imageData){
+                                const savedPath = path.join(process.cwd(), 'profiles',`${user.id}.png`); 
+                                const imageBuffer = Buffer.from(imageData, 'base64');
+                                fs.writeFile(savedPath, imageBuffer, (err) => {
+                                    if (err) {
+                                        console.error('Error saving image:', err);
+                                        res.status(500).json({ msg: 'Error saving image' });
+                                    } else {
+                                        const base64 = imageBuffer.toString('base64');
+                                        res.json({ user: User, msg: 'Profile updated', image: `data:image/png;base64,${base64}` });
+                                    }
+                                });
+                            }else{
+                                res.json({ user: User, msg: 'Profile updated'});
+                            }
                     });
                 })
             }catch(err){

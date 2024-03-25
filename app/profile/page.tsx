@@ -92,7 +92,7 @@ const Profile = () => {
 
   return (
     <div className="profile md:flex md:justify-between md:items-center">
-          <form className='flex flex-wrap justify-between md:w-2/3' action="" onSubmit={(e)=>handleSubmit(e)} encType='multipart/form-data'>
+          <form method="POST" className='flex flex-wrap justify-between md:w-2/3' action="" onSubmit={(e)=>handleSubmit(e)} encType='multipart/form-data'>
             {data?.msg && <div ref={msgRef} className={`w-[100%] px-5 py-2 my-2 bg-red-300 text-red-700 rounded-md`}>{data.msg}</div>}
             <div className="profile-field w-[100%] md:w-[49%] ">
               <label className="text-green-500 italic" htmlFor="">Nickname:</label>

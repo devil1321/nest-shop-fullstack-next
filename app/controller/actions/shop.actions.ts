@@ -31,5 +31,7 @@ interface SUMMARY {
     summary:number
 }
 
+
+
 export type ShopActions = SET_CART | ADD_TO_CART | INCREMENT | DECREMENT | REMOVE_FROM_CART | CLEAR_CART | SUMMARY
 

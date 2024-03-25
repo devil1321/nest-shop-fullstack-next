@@ -31,6 +31,11 @@ interface SET_PRODUCTS{
     products:Interfaces.Product[]
 }
 
+interface FILTER_PRODUCTS{
+    type:APITypes.API_FILTER_PRODUCTS,
+    products:Interfaces.Product[]
+}
+
 interface CHANGE_CURRENCY{
     type:APITypes.API_CHANGE_CURRENCY,
     currency:number;
@@ -73,4 +78,4 @@ interface PAY {
     data:any;
 }
 
-export type APIActions = GET_USER | GET_CART | CLEAR_HISTORY | GET_PAYMENTS | TEST | SET_PRODUCTS | CHANGE_CURRENCY | REGISTER | LOGIN | LOGOUT | UPDATE_CART | UPDATE_PROFILE | PAY
+export type APIActions = GET_USER | GET_CART | CLEAR_HISTORY | GET_PAYMENTS | TEST | SET_PRODUCTS | FILTER_PRODUCTS | CHANGE_CURRENCY | REGISTER | LOGIN | LOGOUT | UPDATE_CART | UPDATE_PROFILE | PAY

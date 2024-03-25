@@ -274,3 +274,39 @@ export const updateProfile = (user:Interfaces.User) => async(dispatch:Dispatch) 
         })
     }
 }
+
+export const filterProducts = (min:number,max:number,category:number) => async(dispatch:Dispatch) =>{
+    try{
+        const res = await axios.get('/assets/products.json')
+        let products = await res.data
+        products = products.filter((p:Interfaces.Product) => {
+            if(p.price > min && p.price < max){
+                if(category !== 0){
+                    if(p.category === category){
+                        return p
+                    }
+                }else{
+                    return p
+                }
+            }
+        })
+        const prevProducts = store.getState().api.products
+        prevProducts.forEach((p:Interfaces.Product)=>{
+            products.forEach((ip:Interfaces.Product)=>{
+                if(p.id === ip.id){
+                    ip.inCart = p.inCart
+                }
+            })
+        })
+        dispatch({
+            type:APITypes.API_FILTER_PRODUCTS,
+            products:products
+        })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_FILTER_PRODUCTS,
+            products:[]
+        })
+    }
+}
