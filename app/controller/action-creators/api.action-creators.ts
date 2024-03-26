@@ -310,3 +310,20 @@ export const filterProducts = (min:number,max:number,category:number) => async(d
         })
     }
 }
+export const pay = (total:number,currency:string,description:string) => async(dispatch:Dispatch) =>{
+    try{
+        const res = await axios.post('/api/pay',{total,currency,description})
+        const data = await res.data
+        console.log(res?.data?.paymentLink)
+        dispatch({
+            type:APITypes.API_PAY,
+            paymentLink:data?.paymentLink
+        })
+    }catch(err){
+        console.log(err)
+        dispatch({
+            type:APITypes.API_PAY,
+            paymentLink:''
+        })
+    }
+}

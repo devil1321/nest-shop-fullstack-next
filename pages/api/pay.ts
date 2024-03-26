@@ -1,22 +1,38 @@
 import { NextApiRequest,NextApiResponse } from 'next'
-import client from '@/prisma/prisma'
+import Stripe from 'stripe';
 
 export default async function handler(req:NextApiRequest,res:NextApiResponse){
     if(req.method === 'POST'){
-        let payments = []
-        const { cart_id,total,user_id } = req.body
-        const cartItems = await client.cart.findMany({
-            where:{
-                cart_id:cart_id
+        try{
+            const { total,currency,description } = req.body
+            if(description && total && description){
+                const stripe = new Stripe(process.env.STRIPE as string,{
+                    apiVersion: '2023-10-16'
+                });
+                const totalStripe = Math.round(total * 100).toFixed(0)
+                const paymentLink = await stripe.checkout.sessions.create({
+                    payment_method_types: ['card'],
+                    line_items: [{
+                        price_data: {
+                            currency: currency,
+                            unit_amount: parseInt(totalStripe),
+                            product_data: {
+                                name: description,
+                            },
+                        },
+                        quantity: 1,
+                    }],
+                    mode: 'payment',
+                    success_url: 'https://localhost:3000/products',
+                    cancel_url: 'https://localhost:3000/payment-error',
+                });
+                res.json({paymentLink:paymentLink.url})   
+            }else{
+                res.json({paymentLink:''})
             }
-        })
-        // const Payment = await client.payments.create({
-        //     user_id,
-        //     total,
-        //     cart_items_id:cart_id,
-        //     is_payed:true
-        // })
-        // res.json({payment:Payment})
-        res.end()
+        } catch (error) {
+            console.error('Error generating payment link:', error);
+            throw error;
+        }
     }
 }

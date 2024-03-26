@@ -10,6 +10,7 @@ interface InitState {
     cart:any[];
     payments:any[];
     image:string;
+    paymentLink:string;
 }
 
 const initState:InitState = {
@@ -19,7 +20,8 @@ const initState:InitState = {
     user:null,
     cart:[],
     payments:[],
-    image:''
+    image:'',
+    paymentLink:''
 }
 
 export default (state:InitState = initState,action:APIActions) =>{
@@ -120,7 +122,7 @@ export default (state:InitState = initState,action:APIActions) =>{
         case APITypes.API_PAY:
             return{
                 ...state,
-                data:action.data
+                paymentLink:action.paymentLink
             }
         case APITypes.API_FILTER_PRODUCTS:
                 return{

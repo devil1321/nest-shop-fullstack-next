@@ -24,7 +24,7 @@ const Cart = () => {
 
   const { currency,refresh,isCartFiltered } = useSelector((state:State) => state.ui)
   const { cart,summary} = useSelector((state:State) => state.shop)
-  const { user,products,cart:previosCart } = useSelector((state:State) => state.api)
+  const { user,products,cart:previosCart,paymentLink } = useSelector((state:State) => state.api)
   const dispatch = useDispatch()
   const UIActions = bindActionCreators(UiActions,dispatch)
   const APIActions = bindActionCreators(ApiActions,dispatch)
@@ -82,6 +82,14 @@ const Cart = () => {
     setIsRequest(false)
   }
 
+  const handleDescription = () =>{
+    let description = ''
+    cart.map((i:any,index:number)=>{
+      const item = products.find((p:any)=>p.id === i.id)
+      description += `${index + 1}. ${item?.title} with price ${item?.price}. `
+    })
+    return description
+  }
   
   useEffect(()=>{
     if(typeof window !== undefined){  
@@ -93,6 +101,11 @@ const Cart = () => {
       }
     }
   },[user,cart.length])
+
+  useEffect(()=>{
+    const description = handleDescription()
+    APIActions.pay(summary,currency.toLowerCase(),description)
+  },[cart,summary,currency])
 
   useEffect(()=>{
     setTmpCart(cart)
@@ -139,10 +152,9 @@ const Cart = () => {
             {tmpCart.length > 0 && <button className='mt-2 w-[100%] bg-green-300 text-white py-2 rounded-md font-bold'>Total: {currency}{summary}</button>}
             {tmpCart.length > 0 && <button onClick={()=>{
               APIActions.updateCart(cart,user)
-              setTimeout(() => {
-                shopActions.clearCart()
-                router.push('/checkout')
-              }, 1000);
+              if(typeof window !== undefined){
+                window.location.href = paymentLink
+              }
             }} className='block text-center mt-2 w-[100%] bg-blue-300 hover:bg-blue-200 text-white py-2 rounded-md font-bold'>Checkout</button>}
           </div>
           : <div className='flex flex-col justify-center items-center w-[100%] h-[300px]'>

@@ -10,7 +10,7 @@ import { bindActionCreators } from "redux";
 const FullSidebar = () =>{
 
     const [min,setMin] = useState<number>(0)
-    const [max,setMax] = useState<number>(0)
+    const [max,setMax] = useState<number>(400)
     const [category,setCategory] = useState<number>(0)
   
     const dispatch = useDispatch()
