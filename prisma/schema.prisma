@@ -19,33 +19,29 @@ model UserShop {
   phone        String    @unique
   createdAt    DateTime  @default(now())
   lastModified DateTime  @default(now()) @updatedAt
-  carts        Cart[]    // One-to-many relationship to Cart
-  payments     Payment[] // One-to-many relationship to Payment
+  carts        Cart[]
+  payments     Payment[]
 
-  // Unique constraints
   @@unique([nickname, email, phone])
 }
 
 model Cart {
-  id         Int       @id @default(autoincrement())
-  cart_id    String    
+  id         Int      @id @default(autoincrement())
+  cart_id    String
   user_id    Int
   quantity   Int
   price      Int
   product_id Int
-  createdAt  DateTime  @default(now())
-  user       UserShop? @relation(fields: [user_id], references: [id])
+  createdAt  DateTime @default(now())
+  user       UserShop @relation(fields: [user_id], references: [id])
 }
 
 model Payment {
-  id             Int       @id @default(autoincrement())
-  user_id        Int
-  total          Int
-  cart_items_id  String
-  is_payed       Boolean
-  timestamp      DateTime  @default(now())
-  user           UserShop? @relation(fields: [user_id], references: [id])
-
-  // Unique constraints
-  // @@unique([payment_id])  // Note: payment_id is not defined in the model
+  id            Int      @id @default(autoincrement())
+  user_id       Int
+  total         Int
+  cart_items_id String
+  is_payed      Boolean
+  timestamp     DateTime @default(now())
+  user          UserShop @relation(fields: [user_id], references: [id])
 }
