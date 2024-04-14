@@ -41,10 +41,7 @@ export default BlogDetails;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try{
-    const blogs = await axios.get('http://localhost:3000/assets/blogs.json');
-    const data: Interfaces.Blog[] = await blogs.data;
-    
-    const paths = data.map((b: { id:number }) => ({
+    const paths = blogs.map((b: { id:number }) => ({
       params: { id: b.id.toString() },
     }));
     return { paths, fallback: false };
