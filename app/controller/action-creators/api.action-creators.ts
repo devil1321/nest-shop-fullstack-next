@@ -219,6 +219,11 @@ export const login = (formData:any) => async(dispatch:Dispatch) =>{
 export const logout = () => async(dispatch:Dispatch) =>{
     if(typeof window !== 'undefined'){
         localStorage.removeItem('jwt')
+        setTimeout(() => {
+            if(typeof window !== 'undefined'){
+                window.location.href = '/'
+            }
+        }, 1000);
         dispatch({
             type:APITypes.API_LOGOUT,
             token:null,
