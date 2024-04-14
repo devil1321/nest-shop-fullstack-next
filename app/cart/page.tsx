@@ -12,7 +12,6 @@ import { bindActionCreators } from 'redux'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import gsap from 'gsap'
-import { FALSE } from 'sass'
 
 const Cart = () => {
 
