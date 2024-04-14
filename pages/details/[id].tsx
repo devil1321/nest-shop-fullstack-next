@@ -21,10 +21,7 @@ export default Details;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try{
-    const products = await axios.get('http://localhost:3000/assets/products.json');
-    const data: Interfaces.Product[] = await products.data;
-    
-    const paths = data.map((p: { id:number }) => ({
+    const paths = products.map((p: { id:number }) => ({
       params: { id: p.id.toString() },
     }));
     return { paths, fallback: false };
