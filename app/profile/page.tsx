@@ -62,6 +62,7 @@ const Profile = () => {
         // @ts-ignore
         tmpProfile[key as keyof Interfaces.User] = user[key as keyof Interfaces.User] 
       }
+      tmpProfile.password = ''
       setProfile(tmpProfile)
     }
   }
@@ -104,7 +105,7 @@ const Profile = () => {
             </div>
             <div className="profile-field w-[100%]">
               <label className="text-green-500 italic" htmlFor="">Password:</label>
-              <input className="block w-[100%] rounded-md bg-white border-[1px] border-gray-300 p-2"type="password" name="password_1" onChange={(e)=>handleChange(e)} value={profile.password}/>
+              <input className="block w-[100%] rounded-md bg-white border-[1px] border-gray-300 p-2"type="password" name="password" onChange={(e)=>handleChange(e)} value={profile.password} required/>
             </div>
             <div className="profile-field w-[100%] md:w-[49%] ">
               <label className="text-green-500 italic" htmlFor="">First Name:</label>
